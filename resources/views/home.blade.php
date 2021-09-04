@@ -1,23 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">ダッシュボード</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    ログインが成功しました！
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        [<a href='/recipes/create'>レシピ投稿</a>]  <!--レシピ投稿ボタン設置-->
     </div>
-</div>
+
+    <div class='recipes'>
+        @foreach ($recipes as $recipe)
+            <div class='recipe'>
+                <h2 class='title'><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a></h2>  <!--レシピのタイトル表示-->
+                <img src="{{ asset('/storage/'.$recipe->image)}}" />  <!--レシピの画像表示-->
+                <p class='explanation'>{{ $recipe->explanation }}</p>  <!--レシピの説明表示-->
+            </div>
+        @endforeach
+    </div>
+    
+    <div class='paginate'>
+            {{ $recipes->links() }}  <!--ぺジネーションのリンクを追加-->
+    </div>
 @endsection
