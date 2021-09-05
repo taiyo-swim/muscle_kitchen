@@ -4,13 +4,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 
 class Recipe extends Model
 {
+    use SoftDeletes;
     
-protected $fillable = [
+    protected $fillable = [
     'title',
     'explanation',
     'image',
@@ -19,9 +21,14 @@ protected $fillable = [
     'point'
     ];
     
-    public function tags()  //テーブルのリレーションを設定
+    public function tags()  //tagsテーブルとのリレーションを設定
     {
         return $this->belongsToMany('App\Tag','recipe_tag');
+    }
+    
+    public function user()  //usersテーブルとのリレーションを設定
+    {
+         return $this->belongsTo('App\User');
     }
     
     public function getPaginateByLimit(int $limit_count = 10)  //データの取得制限
