@@ -28,6 +28,7 @@
             <h2>ポイント</h2>
             {{ $recipe->point }}
         </div>
+        <p class="edit">[<a href="/recipes/{{ $recipe->id }}/edit">編集</a>]</p>
     </div>
     
     <div class="footer">
