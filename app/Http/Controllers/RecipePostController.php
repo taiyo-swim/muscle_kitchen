@@ -33,7 +33,7 @@ class RecipePostController extends Controller
         return view('recipe-create');
     }
     
-    //投稿のDBへのレコード作成
+    //レシピ投稿の実行
     public function store(RecipePostRequest $request, Recipe $recipe)
     {
         // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
@@ -66,11 +66,46 @@ class RecipePostController extends Controller
         //$recipe->image = str_replace('public/','',$filename);  //保存するファイル名からpublicを除外
         $recipe->save();
         
-        $recipe->tags()->attach($tags_id);  // 投稿にタグ付するために、attachメソッドをつかい、モデルを結びつけている中間テーブルにレコードを挿入する。
+        $recipe->tags()->attach($tags_id);  //attachメソッドをつかい、紐づけ対象のidを引数にしてリレーションを紐づけ、モデルを結びつけている中間テーブルにレコードを挿入する。
                                             //タグは$recipeがsaveされた後にattach
         
         return redirect('/recipes/' . $recipe->id);  //レシピ詳細画面へリダイレクト
     }
     
+    public function edit(Recipe $recipe)  //レシピ編集画面の表示
+    {
+        return view('edit-recipe')->with(['recipe' => $recipe]);
+    }
+    
+    //レシピ投稿編集の実行
+    public function update(RecipePostRequest $request, Recipe $recipe)
+    {
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ一-龠]+)/u', $request->tags, $match);
+        
+        $tags = [];
+        foreach ($match[1] as $tag) {
+            $record = Tag::firstOrCreate(['name' => $tag]);
+            array_push($tags, $record);
+        }
+        
+        $tags_id = [];
+        foreach ($tags as $tag) {
+            array_push($tags_id, $tag->id);
+        }
+        
+        $input_post = $request['recipe_post'];
+        $recipe->title = $input_post['title'];
+        $recipe->explanation = $input_post['explanation'];
+        $recipe->ingredients = $input_post['ingredients'];
+        $recipe->how_to_cook = $input_post['how_to_cook'];
+        $recipe->point = $input_post['point'];
+        //$filename = $request->file('image')->store('public');  //publicフォルダに画像を保存
+        //$recipe->image = str_replace('public/','',$filename);  //保存するファイル名からpublicを除外
+        $recipe->save();
+        
+        $recipe->tags()->sync($tags_id);  //attachをsyncにすることでリレーション先のデータを更新できる
+        
+        return redirect('/recipes/' . $recipe->id);  //レシピ詳細画面へリダイレクト
+    }
 }
 
