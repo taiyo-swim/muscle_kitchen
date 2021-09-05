@@ -30,7 +30,7 @@ class RecipePostController extends Controller
     //レシピ投稿画面を表示
     public function create()
     {
-        return view('recipe-create');
+        return view('create-recipe');
     }
     
     //レシピ投稿の実行
@@ -62,6 +62,7 @@ class RecipePostController extends Controller
         $recipe->ingredients = $input['ingredients'];
         $recipe->how_to_cook = $input['how_to_cook'];
         $recipe->point = $input['point'];
+        $recipe->user_id = auth()->id();
         //$filename = $request->file('image')->store('public');  //publicフォルダに画像を保存
         //$recipe->image = str_replace('public/','',$filename);  //保存するファイル名からpublicを除外
         $recipe->save();
@@ -106,6 +107,12 @@ class RecipePostController extends Controller
         $recipe->tags()->sync($tags_id);  //attachをsyncにすることでリレーション先のデータを更新できる
         
         return redirect('/recipes/' . $recipe->id);  //レシピ詳細画面へリダイレクト
+    }
+    
+    public function delete(Recipe $recipe)
+    {
+        $recipe->delete();
+        return redirect('/home');
     }
 }
 

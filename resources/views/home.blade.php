@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <div class="container">
         [<a href='/recipes/create'>レシピ投稿</a>]  <!--レシピ投稿ボタン設置-->
     </div>
@@ -18,4 +19,5 @@
     <div class='paginate'>
             {{ $recipes->links() }}  <!--ぺジネーションのリンクを追加-->
     </div>
+</div>
 @endsection
