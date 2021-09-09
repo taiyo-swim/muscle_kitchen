@@ -21,10 +21,8 @@
                 <p class="explanation__error" style="color:red">{{ $errors->first('recipe_post.explanation') }}</p>
             </div>
             <div class="content_tags">
-                <h2>タグ</h2>
-                @foreach ($recipe->tags as $recipe_tag)
-                <input id="tags" name="tags" type="text" value="#{{ $recipe_tag->name }}"/>
-                @endforeach
+                <h2>タグ</h>
+                <input id="tags" name="tags" type="text" value="{{$recipe->makeTag()}}"/>  <!--recipeモデルクラスのmakeTagメソッドを使用-->
                 <p class="tags__error" style="color:red">{{ $errors->first('tags') }}</p>
             </div>
             <div class="content_image">

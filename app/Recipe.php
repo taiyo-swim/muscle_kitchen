@@ -36,4 +36,12 @@ class Recipe extends Model
         // updated_atで降順に並べたあと、limitで件数制限をかける
         return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
+    
+    public function makeTag(){
+        $output = '';
+        foreach($this->tags()->get() as $tag){  //getで得たrecipesテーブルと関連したtagsテーブルのデータをforeachし、1つずつ#とnameカラムの値を付け加えて$outputに代入
+            $output = $output.'#'.$tag->name;
+        }
+        return $output;
+    }
 }
