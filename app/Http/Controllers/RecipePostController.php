@@ -6,19 +6,29 @@ namespace App\Http\Controllers;
 use App\Recipe;  //Recipeモデルクラスをuse宣言
 use App\Tag;  //Tagモデルクラスをuse宣言
 use App\Http\Requests\RecipePostRequest;
+use Illuminate\Http\Request;
 
 class RecipePostController extends Controller
 {
-    /**
-    * レシピ一覧を表示する
-    * 
-    * @param Recipe Recipeモデル
-    * @return view('表示されるviewの名前')->with(['変数名' => 値]);
-    * get()メソッドでDBから持ってきたデータ($recipe)をrecipesという変数名でviewに渡す
-    */
+    //ホーム画面にレシピ投稿一覧を表示(検索機能の追加)
     public function index(Recipe $recipe)
     {
-        return view('home')->with(['recipes' => $recipe->getPaginateByLimit()]);
+        return view('home')->with('recipes', $recipe->getPaginateByLimit());
+    }
+    
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        
+        $query = Recipe::query();
+        if(!empty($keyword))
+        {
+            $query->where('title','like','%'.$keyword.'%')->orWhere('ingredients','like','%'.$keyword.'%')->orWhereHas('tags', function($query) use ($keyword){
+                $query->where('name','like','%'.$keyword.'%');
+            });
+        }
+        $recipe = $query->orderBy('created_at','desc')->paginate(10);
+        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' => $keyword]);
     }
     
     //特定IDのrecipeを表示する
@@ -30,14 +40,15 @@ class RecipePostController extends Controller
     //レシピ投稿画面を表示
     public function create()
     {
-        return view('create-recipe');
+        $tags = Tag::all();
+        return view('create-recipe')->with(['tags' => $tags]);
     }
     
     //レシピ投稿の実行
     public function store(RecipePostRequest $request, Recipe $recipe)
     {
         // #(ハッシュタグ)で始まる単語を取得。結果は、$matchに多次元配列で代入される。
-        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ一-龠]+)/u', $request->tags, $match);
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んーァ-ンヴー一-龠]+)/u', $request->tags, $match);
         
         
         // $match[0]に#(ハッシュタグ)あり、$match[1]に#(ハッシュタグ)なしの結果が入ってくるので、$match[1]で#(ハッシュタグ)なしの結果のみを使う。
@@ -81,7 +92,7 @@ class RecipePostController extends Controller
     //レシピ投稿編集の実行
     public function update(RecipePostRequest $request, Recipe $recipe)
     {
-        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ一-龠]+)/u', $request->tags, $match);
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んーァ-ンヴー一-龠]+)/u', $request->tags, $match);
         
         $tags = [];
         foreach ($match[1] as $tag) {
@@ -93,6 +104,7 @@ class RecipePostController extends Controller
         foreach ($tags as $tag) {
             array_push($tags_id, $tag->id);
         }
+        
         
         $input_post = $request['recipe_post'];
         $recipe->title = $input_post['title'];
@@ -109,10 +121,12 @@ class RecipePostController extends Controller
         return redirect('/recipes/' . $recipe->id);  //レシピ詳細画面へリダイレクト
     }
     
+    //レシピ投稿を削除する
     public function delete(Recipe $recipe)
     {
         $recipe->delete();
         return redirect('/home');
     }
+    
 }
 
