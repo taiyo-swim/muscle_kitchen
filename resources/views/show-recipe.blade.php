@@ -12,6 +12,31 @@
     </div>
     
     <div class="recipe">
+        <span>
+        <img src="{{asset('nicebutton.png')}}" width="30px">
+         
+        <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
+        @if($nice)
+        <!-- 「いいね」取消用ボタンを表示 -->
+        	<a href="/recipes/unnice/{{ $recipe->id }}" class="btn btn-success btn-sm">
+        		いいね
+        		<!-- 「いいね」の数を表示 -->
+        		<span class="badge">
+        			{{ $recipe->nices->count() }}
+        		</span>
+        	</a>
+        @else
+        <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+        	<a href="/recipes/nice/{{ $recipe->id }}" class="btn btn-secondary btn-sm">
+        		いいね
+        		<!-- 「いいね」の数を表示 -->
+        		<span class="badge">
+        			{{ $recipe->nices->count() }}
+        		</span>
+        	</a>
+        @endif
+        </span>
+                
         <h1 class="title">
             {{ $recipe->title }}
         </h1>
