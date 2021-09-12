@@ -21,14 +21,19 @@ class Recipe extends Model
     'point'
     ];
     
-    public function tags()  //tagsテーブルとのリレーションを設定
+    public function tags()  //Tgaモデルとのリレーションを設定
     {
         return $this->belongsToMany('App\Tag','recipe_tag');
     }
     
-    public function user()  //usersテーブルとのリレーションを設定
+    public function user()  //Userモデルとのリレーションを設定
     {
          return $this->belongsTo('App\User');
+    }
+    
+    public function nices()  //Niceモデルとのリレーションを設定
+    {
+         return $this->hasMany('App\Nice');
     }
     
     public function getPaginateByLimit(int $limit_count = 10)  //データの取得制限

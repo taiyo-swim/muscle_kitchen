@@ -7,6 +7,7 @@ use App\Recipe;  //Recipeモデルクラスをuse宣言
 use App\Tag;  //Tagモデルクラスをuse宣言
 use App\Http\Requests\RecipePostRequest;
 use Illuminate\Http\Request;
+use App\Nice;
 
 class RecipePostController extends Controller
 {
@@ -16,13 +17,15 @@ class RecipePostController extends Controller
         return view('home')->with('recipes', $recipe->getPaginateByLimit());
     }
     
+    //検索機能の実行
     public function search(Request $request)
     {
-        $keyword = $request->input('keyword');
+        $keyword = $request->input('keyword');  //検索フォームで入力されたキーワードを受け取る
         
-        $query = Recipe::query();
-        if(!empty($keyword))
+        $query = Recipe::query();  //クエリを生成
+        if(!empty($keyword))  //検索フォームにキーワードが入力されたときの処理
         {
+            //whereで検索条件の絞り込み($keywordであいまい検索)、orWhereHasでリレーション先のテーブルのレコードから検索
             $query->where('title','like','%'.$keyword.'%')->orWhere('ingredients','like','%'.$keyword.'%')->orWhereHas('tags', function($query) use ($keyword){
                 $query->where('name','like','%'.$keyword.'%');
             });
@@ -34,7 +37,8 @@ class RecipePostController extends Controller
     //特定IDのrecipeを表示する
     public function show(Recipe $recipe)  // 引数の$postはid=1のPostインスタンス
     {
-        return view('show-recipe')->with(['recipe' => $recipe]);
+        $nice=Nice::where('recipe_id', $recipe->id)->where('user_id', auth()->user()->id)->first();  //いいね表示用のコードを追加
+        return view('show-recipe')->with(['recipe' => $recipe, 'nice' => $nice]);
     }
     
     //レシピ投稿画面を表示
