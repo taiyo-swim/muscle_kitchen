@@ -8,6 +8,7 @@ use App\Tag;  //Tagモデルクラスをuse宣言
 use App\Http\Requests\RecipePostRequest;
 use Illuminate\Http\Request;
 use App\Nice;
+use Illuminate\Support\Facades\Storage;
 
 class RecipePostController extends Controller
 {
@@ -78,8 +79,13 @@ class RecipePostController extends Controller
         $recipe->how_to_cook = $input['how_to_cook'];
         $recipe->point = $input['point'];
         $recipe->user_id = auth()->id();
-        //$filename = $request->file('image')->store('public');  //publicフォルダに画像を保存
-        //$recipe->image = str_replace('public/','',$filename);  //保存するファイル名からpublicを除外
+        
+        if ($request->file('image')) {
+        $image = $request->file('image');  //s3へ画像をアップロード
+        $path = Storage::disk('s3')->putFile('/', $image, 'public');  //putFile(PATH,$file)で指定したPATH（バケットの'/'フォルダ）にファイルを保存※第三引数に'public'を入れないと外部からのアクセスができない
+        $recipe->image_path = $path;  //アップロードした画像のパスを取得
+        }
+        
         $recipe->save();
         
         $recipe->tags()->attach($tags_id);  //attachメソッドをつかい、紐づけ対象のidを引数にしてリレーションを紐づけ、モデルを結びつけている中間テーブルにレコードを挿入する。
@@ -116,8 +122,13 @@ class RecipePostController extends Controller
         $recipe->ingredients = $input_post['ingredients'];
         $recipe->how_to_cook = $input_post['how_to_cook'];
         $recipe->point = $input_post['point'];
-        //$filename = $request->file('image')->store('public');  //publicフォルダに画像を保存
-        //$recipe->image = str_replace('public/','',$filename);  //保存するファイル名からpublicを除外
+        
+        if ($request->file('image')) {
+        $image = $request->file('image');  //s3へ画像をアップロード
+        $path = Storage::disk('s3')->putFile('/', $image, 'public');  //putFile(PATH,$file)で指定したPATH（バケットの'/'フォルダ）にファイルを保存※第三引数に'public'を入れないと外部からのアクセスができない
+        $recipe->image_path = $path;  //アップロードした画像のパスを取得
+        }
+        
         $recipe->save();
         
         $recipe->tags()->sync($tags_id);  //attachをsyncにすることでリレーション先のデータを更新できる
@@ -128,6 +139,7 @@ class RecipePostController extends Controller
     //レシピ投稿を削除する
     public function delete(Recipe $recipe)
     {
+        $s3_delete = Storage::disk('s3')->delete($recipe->image_path);  //s3の画像を削除
         $recipe->delete();
         return redirect('/home');
     }
