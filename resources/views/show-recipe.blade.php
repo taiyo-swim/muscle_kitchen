@@ -47,7 +47,9 @@
         @endforeach
         </div>
         <div class="image">
-        <p><img src="{{ asset('/storage/'.$recipe->image)}}"/></p>
+        @if ($recipe->image_path)
+            <p><img src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/{{ $recipe->image_path }}" width="400 height="300/></p>
+        @endif
         </div>
         <p class="explanation">
             {{ $recipe->explanation }}

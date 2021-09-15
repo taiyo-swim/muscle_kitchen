@@ -7,7 +7,7 @@
     <body>
         <h1 class="title">編集画面</h1>
         <div class="content">
-            <form action="/recipes/{{ $recipe->id }}" method="POST">
+            <form action="/recipes/{{ $recipe->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="content_title">
@@ -27,8 +27,8 @@
             </div>
             <div class="content_image">
                 <h2>画像</h2>
-                <input id="image" type="file" name="recipe_post[image]"/>
-                <p class="image__error" style="color:red">{{ $errors->first('recipe_post.image') }}</p>
+                <input id="image" type="file" name="image"/>
+                <p class="image__error" style="color:red">{{ $errors->first('image') }}</p>
             </div>
             <div class="content_ingredients">
                 <h2>食材</h2>

@@ -20,7 +20,7 @@ class CreateRecipesTable extends Migration
             $table->text('ingredients');
             $table->text('how_to_cook');
             $table->text('point')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image_path')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

@@ -25,8 +25,8 @@
             </div>
             <div class="image">
                 <h2>画像</h2>
-                <input id="image" type="file" name="recipe_post[image]"/>
-                <p class="image__error" style="color:red">{{ $errors->first('recipe_post.image') }}</p>
+                <input id="image" type="file" name="image"/>
+                <p class="image__error" style="color:red">{{ $errors->first('image') }}</p>
             </div>
             <div class="ingredients">
                 <h2>食材</h2>
