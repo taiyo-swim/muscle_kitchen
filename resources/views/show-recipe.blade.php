@@ -42,8 +42,12 @@
         </h1>
         <p class="user_name">{{ $recipe->user->name }}</p>
          <div class="tags">
-        @foreach ($recipe->tags as $recipe_tag)
-            <span class="badge badge-pill badge-info">#{{ $recipe_tag->name }}</span>
+        @foreach ($recipe->tags as $recipe_tag)  
+        <form method="get" action="/tag_search">  <!--タグボタンを押したらそのタグを有するレシピを表示する検索機能-->
+            @csrf
+            <input type="hidden" name="tag_keyword" value="{{ $recipe_tag->name }}"/>
+            <button  class="badge badge-pill badge-info" type="submit">#{{ $recipe_tag->name }}</button>
+        </form>
         @endforeach
         </div>
         <div class="image">

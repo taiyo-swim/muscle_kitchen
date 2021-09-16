@@ -35,6 +35,18 @@ class RecipePostController extends Controller
         return view('search-recipe')->with(['recipes' => $recipe, 'keyword' => $keyword]);
     }
     
+    //タグ検索機能の実行（タグが押されたときにそのタグが付いているレシピのみを表示）
+    public function tag_search(Request $request)
+    {
+        $keyword = $request->input('tag_keyword');
+        $query =Recipe::query();
+        
+        $query->whereHas('tags', function($query) use ($keyword){$query->where('name','like','%'.$keyword.'%');});
+        
+        $recipe =$query->orderBy('created_at','desc')->paginate(10);
+        return view('search-recipe')->with(['recipes' => $recipe]);
+    }
+    
     //特定IDのrecipeを表示する
     public function show(Recipe $recipe)  // 引数の$postはid=1のPostインスタンス
     {
