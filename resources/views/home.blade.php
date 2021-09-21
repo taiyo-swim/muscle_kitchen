@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <div class="header">
+        <a href="/my_page">マイページ</a>
         [<a href='/recipes/create'>レシピ投稿</a>]  <!--レシピ投稿ボタン設置-->
     </div>
     

@@ -32,7 +32,8 @@ class RecipePostController extends Controller
             });
         }
         $recipe = $query->orderBy('created_at','desc')->paginate(10);
-        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' => $keyword]);
+        $count = count($recipe);
+        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' => $keyword, 'count' => $count]);
     }
     
     //タグ検索機能の実行（タグが押されたときにそのタグが付いているレシピのみを表示）
@@ -44,7 +45,8 @@ class RecipePostController extends Controller
         $query->whereHas('tags', function($query) use ($keyword){$query->where('name','like','%'.$keyword.'%');});
         
         $recipe =$query->orderBy('created_at','desc')->paginate(10);
-        return view('search-recipe')->with(['recipes' => $recipe]);
+        $count = count($recipe);
+        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' =>$keyword, 'count' => $count]);
     }
     
     //特定IDのrecipeを表示する
@@ -108,12 +110,15 @@ class RecipePostController extends Controller
     
     public function edit(Recipe $recipe)  //レシピ編集画面の表示
     {
+        $this->authorize('update', $recipe);  //ポリシーを元に投稿したユーザー以外は編集画面が表示されないようにアクションを認可
         return view('edit-recipe')->with(['recipe' => $recipe]);
     }
     
     //レシピ投稿編集の実行
     public function update(RecipePostRequest $request, Recipe $recipe)
     {
+        $this->authorize('update', $recipe);  //ポリシーを元に投稿したユーザー以外は編集できないようにアクションを認可
+        
         preg_match_all('/#([a-zA-z0-9０-９ぁ-んーァ-ンヴー一-龠]+)/u', $request->tags, $match);
         
         $tags = [];
@@ -151,10 +156,10 @@ class RecipePostController extends Controller
     //レシピ投稿を削除する
     public function delete(Recipe $recipe)
     {
+        $this->authorize('delete', $recipe);  //ポリシーを元に投稿したユーザー以外は削除できないようにアクションを認可
         $s3_delete = Storage::disk('s3')->delete($recipe->image_path);  //s3の画像を削除
         $recipe->delete();
         return redirect('/home');
     }
-    
 }
 
