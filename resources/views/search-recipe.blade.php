@@ -2,6 +2,22 @@
 
 @section('content')
 <div class="container">
+    <!--↓↓ 検索フォーム ↓↓-->
+    <div class="col-sm-4" style="padding:20px 0; padding-left:0px;">
+        <form class="form-inline" method="get" action="/search">
+        @csrf
+            <div class="form-group">
+                <input type="text" name="keyword" class="form-control" placeholder="料理名、食材名">
+            </div>
+            <input type="submit" value="検索" class="btn btn-info">
+        </form>
+    </div>
+    <!--↑↑ 検索フォーム ↑↑-->
+    
+    <div class="keyword">
+            <p>{{ $keyword }}の検索結果一覧：{{ $count }}品</p>
+    </div>
+    
     
     <div class='recipes'>
         @foreach ($recipes as $recipe)
@@ -13,6 +29,10 @@
                 <p class='explanation'>{{ $recipe->explanation }}</p>  <!--レシピの説明表示-->
             </div>
         @endforeach
+    </div>
+    
+    <div class='paginate'>
+            {{ $recipes->links() }}  <!--ぺジネーションのリンクを追加-->
     </div>
 </div>
 @endsection

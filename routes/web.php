@@ -32,7 +32,13 @@ Route::put('/recipes/{recipe}', 'RecipePostController@update');  //レシピ投�
 Route::delete('/recipes/{recipe}', 'RecipePostController@delete');  //レシピ投稿削除の実行
 Route::get('recipes/nice/{recipe}', 'NiceController@nice')->name('nice');  //いいねの実行
 Route::get('recipes/unnice/{recipe}', 'NiceController@unnice')->name('unnice');  //いいねの取り消し
+Route::get('/users/{user}', 'UserController@show');  //ユーザーの投稿一覧の表示
+Route::get('/my_page', 'My_pageController@index');  //マイページの表示
+Route::get('/my_page/my_recipes', 'My_pageController@show_my_recipe');  //マイレシピの表示
+Route::get('/my_page/my_nice_recipes', 'My_pageController@show_nice_recipe');  //いいねしたレシピの表示
 });
 
 Route::get('/auth/google', 'OAuthLoginController@getGoogleAuth');
 Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');
+
+Route::get('/test', 'RecipePostController@test');

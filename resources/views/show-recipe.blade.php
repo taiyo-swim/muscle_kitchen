@@ -2,13 +2,17 @@
 
 @section('content')
     <div class="header">
-        <p class="edit">[<a href="/recipes/{{ $recipe->id }}/edit">編集</a>]</p>
-        <form action="/recipes/{{ $recipe->id }}" id="form_delete" method="post">
-            @csrf
-            @method('DELETE')
-            <p class="delete">[<span onclick="return deletePost(this);">削除</span>]</p>
-        </form>
-        </form>
+        @can('update', $recipe)  <!--投稿したユーザー以外には表示されない-->
+            <p class="edit">[<a href="/recipes/{{ $recipe->id }}/edit">編集</a>]</p>
+        @endcan
+        
+        @can('delete', $recipe)  <!--投稿したユーザー以外には表示されない-->
+            <form action="/recipes/{{ $recipe->id }}" id="form_delete" method="post">
+                @csrf
+                @method('DELETE')
+                <p class="delete">[<span onclick="return deletePost(this);">削除</span>]</p>
+            </form>
+        @endcan
     </div>
     
     <div class="recipe">
@@ -40,7 +44,7 @@
         <h1 class="title">
             {{ $recipe->title }}
         </h1>
-        <p class="user_name">{{ $recipe->user->name }}</p>
+        <p class="user_name"><a href="/users/{{ $recipe->user->id }}">{{ $recipe->user->name }}</a>
          <div class="tags">
         @foreach ($recipe->tags as $recipe_tag)  
         <form method="get" action="/tag_search">  <!--タグボタンを押したらそのタグを有するレシピを表示する検索機能-->
