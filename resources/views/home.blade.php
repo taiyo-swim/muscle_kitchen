@@ -2,10 +2,6 @@
 
 @section('content')
 <div class="container">
-    <div class="header">
-        <a href="/my_page">マイページ</a>
-        [<a href='/recipes/create'>レシピ投稿</a>]  <!--レシピ投稿ボタン設置-->
-    </div>
     
     <!--↓↓ 検索フォーム ↓↓-->
     <div class="col-sm-4" style="padding:20px 0; padding-left:0px;">
@@ -35,4 +31,6 @@
             {{ $recipes->links() }}  <!--ぺジネーションのリンクを追加-->
     </div>
 </div>
+
+
 @endsection

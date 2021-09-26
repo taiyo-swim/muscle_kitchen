@@ -9,6 +9,7 @@ use App\Http\Requests\RecipePostRequest;
 use Illuminate\Http\Request;
 use App\Nice;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class RecipePostController extends Controller
 {
@@ -53,7 +54,7 @@ class RecipePostController extends Controller
     public function show(Recipe $recipe)  // 引数の$postはid=1のPostインスタンス
     {
         $nice=Nice::where('recipe_id', $recipe->id)->where('user_id', auth()->user()->id)->first();  //いいね表示用のコードを追加
-        return view('show-recipe')->with(['recipe' => $recipe, 'nice' => $nice]);
+        return view('show-recipe')->with(['recipe' => $recipe, 'nice' => $nice, 'auth' => Auth::user()]);
     }
     
     //レシピ投稿画面を表示
@@ -140,7 +141,8 @@ class RecipePostController extends Controller
         $recipe->how_to_cook = $input_post['how_to_cook'];
         $recipe->point = $input_post['point'];
         
-        if ($request->file('image')) {
+        if ($request->file('image')) {  //画像が変更されたら
+        $s3_delete = Storage::disk('s3')->delete($recipe->image_path);  //変更前の画像をs3から削除
         $image = $request->file('image');  //s3へ画像をアップロード
         $path = Storage::disk('s3')->putFile('/', $image, 'public');  //putFile(PATH,$file)で指定したPATH（バケットの'/'フォルダ）にファイルを保存※第三引数に'public'を入れないと外部からのアクセスができない
         $recipe->image_path = $path;  //アップロードした画像のパスを取得

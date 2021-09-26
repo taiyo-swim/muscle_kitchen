@@ -1,10 +1,10 @@
-@extends('layouts.app')  <!--自分がいいねしたレシピを表示-->
+@extends('layouts.app')  <!--ユーザーがいいねしたレシピを表示-->
 
 @section('content')
 <div class="container">
     
     <div class="header">
-            <h2>いいねしたレシピ：{{ $count }}品</p>
+            <h2>{{ $user->name }}いいねしたレシピ：{{ $count }}品</p>
     </div>
     
     
@@ -21,7 +21,11 @@
     </div>
     
     <div class='paginate'>
-            {{ $nice_recipes->links() }}  <!--ぺジネーションのリンクを追加-->
+        {{ $nice_recipes->links() }}  <!--ぺジネーションのリンクを追加-->
+    </div>
+        
+    <div class="footer">
+        <a href="/users/{{ $user->id }}">戻る</a>
     </div>
     
 </div>

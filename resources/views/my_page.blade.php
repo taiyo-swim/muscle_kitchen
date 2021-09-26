@@ -9,6 +9,8 @@
         <div class="information">
             <p>ユーザー名：{{ $my_user->name }}</p>
             <p>メールアドレス：{{ $my_user->email }}</p>
+            <p class="follower"><a href="/my_page/follower">フォロワー</a></p>
+            <p class="follow"><a href="/my_page/follow">フォロー</a></p>
         </div>
         
         <p><a href="/my_page/my_recipes">マイレシピ</a></p>

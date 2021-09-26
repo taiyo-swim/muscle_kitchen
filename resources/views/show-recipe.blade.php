@@ -44,7 +44,13 @@
         <h1 class="title">
             {{ $recipe->title }}
         </h1>
-        <p class="user_name"><a href="/users/{{ $recipe->user->id }}">{{ $recipe->user->name }}</a>
+        <p class="user_name">
+            @if($recipe->user->id === $auth->id)
+                <a href="/my_page">{{ $recipe->user->name }}</a>  <!--自分の投稿したレシピの場合はマイページへ-->
+            @else
+                <a href="/users/{{ $recipe->user->id }}">{{ $recipe->user->name }}</a>  <!--それ以外の場合はユーザーページへ-->
+            @endif
+            
          <div class="tags">
         @foreach ($recipe->tags as $recipe_tag)  
         <form method="get" action="/tag_search">  <!--タグボタンを押したらそのタグを有するレシピを表示する検索機能-->
