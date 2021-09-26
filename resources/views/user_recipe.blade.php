@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="user_name">
-            <p>{{ $user_name }}のレシピ：{{ $count }}品</p>
+            <p>{{ $user->name }}のレシピ：{{ $count }}品</p>
         </div>
         
         @foreach ($recipes as $recipe)
@@ -22,7 +22,7 @@
         </div>
         
         <div class="footer">
-            <a href="/home">戻る</a>
+            <a href="/users/{{ $user->id }}">戻る</a>
         </div>
    </div>     
 
