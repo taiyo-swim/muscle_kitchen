@@ -26,7 +26,11 @@ class UserController extends Controller
         $user = User::find($user->id);  //リクエストされたユーザーのidと一致するuserテーブルのidを取得
         $recipes = Recipe::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         
-        return view('user_page')->with(['user' => $user, 'recipes' => $recipes, 'defaultFollowed' => $defaultFollowed, 'defaultCount' => $defaultCount]);
+        //ユーザーのフォロー数を取得
+        $follow_id = FollowUser::where('following_user_id', $user->id)->select('followed_user_id')->get();
+        $follow_count = count($user->whereIn('id', $follow_id)->orderBy('created_at', 'desc')->paginate(10));
+        
+        return view('user_page')->with(['user' => $user, 'recipes' => $recipes, 'defaultFollowed' => $defaultFollowed, 'defaultCount' => $defaultCount, 'follow_count' =>$follow_count]);
         }
     }
     

@@ -37702,7 +37702,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "float-right" }, [
-    _c("p", [_vm._v("フォロワー数：" + _vm._s(_vm.followCount))]),
+    _c("p", [
+      _vm._v("フォロワー："),
+      _c("a", { attrs: { href: "/users/" + _vm.userId + "/follower" } }, [
+        _vm._v(_vm._s(_vm.followCount))
+      ]),
+      _vm._v("人")
+    ]),
     _vm._v(" "),
     !_vm.followed
       ? _c(
