@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Muscle Kitchen') }}</title>
 
     <!-- Scripts -->
     {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
@@ -21,22 +21,37 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('app.name', 'Muscle Recipe') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <h4 class="navbar-brand">
+                    Muscle Kitchen
+                </h4>
+                
+                <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">-->
+                <!--    <span class="navbar-toggler-icon"></span>-->
+                <!--</button>-->
+                
+                
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                    <ul class="navbar-nav mr-auto" style="margin: 0 auto;">
+                        <li><a class="dropdown-item" href="/home" style="border-right: solid;">
+                            ホーム
+                        </a></li>
+                        <li><a class="dropdown-item" href="/my_page" style="border-right: solid;">
+                            マイページ
+                        </a></li>
+                                       
+                        <li><a class="dropdown-item" href="/recipes/create">
+                            レシピ投稿
+                        </a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -58,13 +73,13 @@
                                 </a>
                                 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/my_page">
-                                        マイページ
-                                    </a>
+                                    <!--<a class="dropdown-item" href="/my_page">-->
+                                    <!--    マイページ-->
+                                    <!--</a>-->
                                        
-                                    <a class="dropdown-item" href="/recipes/create">
-                                        レシピ投稿
-                                    </a>   
+                                    <!--<a class="dropdown-item" href="/recipes/create">-->
+                                    <!--    レシピ投稿-->
+                                    <!--</a>   -->
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

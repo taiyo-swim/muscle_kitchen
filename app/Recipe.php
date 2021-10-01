@@ -36,7 +36,7 @@ class Recipe extends Model
          return $this->hasMany('App\Nice');
     }
     
-    public function getPaginateByLimit(int $limit_count = 10)  //データの取得制限
+    public function getPaginateByLimit(int $limit_count = 12)  //データの取得制限
     {
         //created_atで降順に並べたあと、limitで件数制限をかける
         return $this->orderBy('created_at', 'DESC')->paginate($limit_count);

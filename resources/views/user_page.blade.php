@@ -8,8 +8,7 @@
         
         <div class="information">
             <p class="user-name">ユーザー名：{{ $user->name }}</p>
-            <p class="follower"><a href="/users/{{ $user->id }}/follower">フォロワー</a></p>
-            <p class="follow"><a href="/users/{{ $user->id }}/follow">フォロー</a></p>
+            <p class="follow">フォロー：<a href="/users/{{ $user->id }}/follow">{{ $follow_count }}</a>人</p>
             
             <div id="el">
                 <follow-component  {{--FollowComponentを読み込む--}}

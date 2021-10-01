@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+html {
+    font-size: 100%;
+}
+
+body {
+    color: #2b2a27;
+    background-image: url(/../floor-1866663_1280.jpg);
+    
+}
+
+main {
+    padding-bottom: 80px;
+}
+
+footer {
+    background-color: #000;
+    color: yellow;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    height: 60px;
+    justify-content: space-between;
+    filter: opacity(60%);
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: yellow;
+}
+
+
+/*main*/
+.visualandText {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #a0522d;
+}
+
+#mainvisual img {
+    height: auto;
+    object-fit: cover;
+    object-position: center top;
+    filter: opacity(60%);
+}
+
+.mainvisual-left {
+    float: left;
+    width: 50%;
+}
+
+.mainvisual-right {
+    float: right;
+    width: 50%;
+}
+
+.visualandText p {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #add8e6;
+    font-weight: bold;
+    font-size: 1.5vw;
+    font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+.search {
+    text-align: center;
+    padding-left: 200px;
+    margin-bottom: 50px;
+}
+
+.search-form {
+    display: inline-block;
+    position: relative;
+    width: 600px;
+}
+
+.search-box {
+    height: 30px;
+    width: 400px;
+    padding-left: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 25px;
+    border: solid;
+    border-color: #808000;
+    outline: none;
+    background-color: #eee;
+}
+
+.search-button {
+    height: 30px;
+    width: 50px;
+    position: absolute;
+    left: 350px;
+    top: 0;
+    background-color: #808000;
+    color: #fff;
+    border: none;
+    border-radius: 0 25px 25px 0;
+}
+
+.search-button:hover {
+    color: #888;
+}
+
+.home-recipes {
+    padding: 20px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    /*justify-content: space-between;*/
+    justify-content: space-around;
+    
+}
+
+.home-recipe {
+    margin: 5px;
+    padding: 3px;
+    width: 30%;
+    background-color: #fafae0;
+    border-radius: 5%;
+}
+
+.home-recipe a {
+    color: #556b2f;
+}
+
+.home-recipe img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 5%;
+}
+
+.home-recipe-text {
+    margin: 10px;
+    text-align: left;
+    font-family: serif;
+}
+
+.footer-link {
+    list-style-type: none;
+}
+
+footer a {
+    color: yellow;
+}
