@@ -17,7 +17,7 @@
     
     <div class="recipe">
         <span>
-        <img src="{{asset('nicebutton.png')}}" width="30px">
+        <i class="fas fa-heart fa-fw fa-lg my-red faa-pulse animated" style="color: #ce5242"></i>
          
         <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
         @if($nice)
@@ -44,12 +44,13 @@
         <h1 class="title">
             {{ $recipe->title }}
         </h1>
-        <p class="user_name">
+        <div class="user_name">
             @if($recipe->user->id === $auth->id)
                 <a href="/my_page">{{ $recipe->user->name }}</a>  <!--自分の投稿したレシピの場合はマイページへ-->
             @else
                 <a href="/users/{{ $recipe->user->id }}">{{ $recipe->user->name }}</a>  <!--それ以外の場合はユーザーページへ-->
             @endif
+        </div>
             
          <div class="tags">
         @foreach ($recipe->tags as $recipe_tag)  
@@ -63,6 +64,8 @@
         <div class="image">
         @if ($recipe->image_path)
             <p><img src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/{{ $recipe->image_path }}" width="400 height="300/></p>
+        @else
+            <img src="{{asset('cooking_frying_pan01_01.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
         @endif
         </div>
         <p class="explanation">

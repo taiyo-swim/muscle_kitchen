@@ -4514,8 +4514,7 @@ input[type=button].btn-block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 1px;
-  font-family: 'Sawarabi Mincho', sans-serif;
+  padding: 0.5rem 1rem;
 }
 
 .navbar .container,
@@ -4528,22 +4527,16 @@ input[type=button].btn-block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  /*margin: 0;*/
-  /*padding-left: 200px;*/
-  /*background-color: #fafae0;*/
 }
 
 .navbar-brand {
-  /*display: inline-block;*/
-  /*padding-top: 0.32rem;*/
-  /*padding-bottom: 0.32rem;*/
-  display: flex;
-  align-items: center;
+  display: inline-block;
+  padding-top: 0.32rem;
+  padding-bottom: 0.32rem;
   margin-right: 1rem;
-  margin-bottom: 0;
-  font-family: 'Sawarabi Mincho', sans-serif;
-  /*line-height: inherit;*/
-  /*white-space: nowrap;*/
+  font-size: 1.125rem;
+  line-height: inherit;
+  white-space: nowrap;
 }
 
 .navbar-brand:hover,

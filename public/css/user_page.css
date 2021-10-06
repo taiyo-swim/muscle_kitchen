@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+.user-title {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.user-title h2 {
+    color: white;
+    text-shadow: 2px 2px 1px black;
+    font-family: 'Sawarabi Mincho', sans-serif;
+    font-weight: bold;
+}
+
+.user-information {
+    padding: 20px;
+    margin: 0 100px;
+    color: #556b2f;
+    /*border: double 6px #556b2f;*/
+    font-family: serif;
+    background-image: url(/../wallpaper_00018.jpg);
+    box-shadow: 5px 5px 3px black;
+}
+
+.following {
+    display: flex;
+    padding-top: 20px;
+}
+
+.following a {
+    margin-right: 20px;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #00BCD4;
+    background: #ECECEC;
+    border-radius: 0 15px 15px 0;
+    transition: .4s;
+    text-shadow: 1px 1px 1px black;
+}
+
+.following a:hover {
+    background: #636363;
+}
+
+.user-recipe {
+    margin: 50px 100px;
+    font-family: serif;
+    display: flex;
+}
+
+.user-recipe a {
+    width: 100px;
+    color: #333;
+    margin-right: 20px;
+    font-weight: 700;
+    background-color: #bdb76b;
+    box-shadow: 5px 5px 3px black;
+    transition: 0.3s;
+}
+
+.user-recipe a:hover {
+    text-decoration: none;
+    background-color: #6b8e23;
+    box-shadow: 0 0 0;
+}
+
+.recipe_images {
+    margin: 0 100px;
+}
+
+.recipe_images h3 {
+    color: white;
+    text-shadow: 2px 2px 1px black;
+    font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+.image-link {
+    /*background-color: #fafae0;*/
+    padding: 5px 0;
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+    /*text-align: center;*/
+/*    align-items: stretch;*/
+}
+
+.image-link img {
+    width: 180px;
+    height: 150px;
+    margin: 5px;
+    display: block;
+    object-fit: cover;
+    border-radius: 5%;
+    box-shadow: 5px 5px 3px black;
+    /*border: dotted 3px #add8e6;*/
+}
+
+.image-link img:hover {
+    filter: grayscale(100%);
+    box-shadow: 0 0 0;
+}

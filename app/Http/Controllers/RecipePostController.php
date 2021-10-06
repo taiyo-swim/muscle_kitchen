@@ -34,7 +34,7 @@ class RecipePostController extends Controller
         }
         $recipe = $query->orderBy('created_at','desc')->paginate(10);
         $count = count($recipe);
-        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' => $keyword, 'count' => $count]);
+        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' => $keyword, 'count' => $count, 'auth' => Auth::user()]);
     }
     
     //タグ検索機能の実行（タグが押されたときにそのタグが付いているレシピのみを表示）
@@ -47,7 +47,7 @@ class RecipePostController extends Controller
         
         $recipe =$query->orderBy('created_at','desc')->paginate(10);
         $count = count($recipe);
-        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' =>$keyword, 'count' => $count]);
+        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' =>$keyword, 'count' => $count, 'auth' => Auth::user()]);
     }
     
     //特定IDのrecipeを表示する
