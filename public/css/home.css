@@ -9,7 +9,8 @@ html {
 body {
     color: #2b2a27;
     background-image: url(/../floor-1866663_1280.jpg);
-    
+    background-color: rgba(255,255,255,0.2);
+    background-blend-mode: lighten;
 }
 
 main {
@@ -17,15 +18,16 @@ main {
 }
 
 footer {
-    background-color: #000;
-    color: yellow;
+    background-color: white;
+    color: black;
     position: absolute;
     width: 100%;
     display: flex;
     padding: 10px;
     height: 60px;
     justify-content: space-between;
-    filter: opacity(60%);
+    font-family: 'Sawarabi Mincho', sans-serif;
+    text-shadow: 2px 2px 1px #bbb;
 }
 
 img {
@@ -42,14 +44,17 @@ a {
     display: inline-block;
     position: relative;
     margin-bottom: 20px;
-    background-color: #a0522d;
 }
 
 #mainvisual img {
     height: auto;
     object-fit: cover;
     object-position: center top;
-    filter: opacity(60%);
+    filter: grayscale(50%);
+    /*border-top: solid;*/
+    /*border-bottom: solid;*/
+    /*border-color: #808000;*/
+    box-shadow: 0 5px 3px black;
 }
 
 .mainvisual-left {
@@ -62,13 +67,20 @@ a {
     width: 50%;
 }
 
-.visualandText p {
+.maintext h1 {
+    padding-bottom: 50px;
+    text-shadow: 2px 2px 0 black;
+}
+
+.maintext {
     position: absolute;
     text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    color: #add8e6;
+    color: #b6ff01;
+    /*color: white;*/
+    text-shadow: 2px 2px 0 black;
     font-weight: bold;
     font-size: 1.5vw;
     font-family: 'Sawarabi Mincho', sans-serif;
@@ -98,6 +110,7 @@ a {
     border-color: #808000;
     outline: none;
     background-color: #eee;
+    box-shadow: 5px 5px 3px black;
 }
 
 .search-button {
@@ -120,7 +133,7 @@ a {
     padding: 20px 100px;
     display: flex;
     flex-wrap: wrap;
-    align-items: stretch;
+    /*align-items: stretch;*/
     /*justify-content: space-between;*/
     justify-content: space-around;
     
@@ -128,10 +141,20 @@ a {
 
 .home-recipe {
     margin: 5px;
-    padding: 3px;
+    padding: 5px;
     width: 30%;
+    height: 310px;
+    overflow: hidden;
     background-color: #fafae0;
     border-radius: 5%;
+    border: dotted 3px #556b2f;
+    box-shadow: 5px 5px 3px black;
+}
+
+.home-recipe:hover {
+    box-shadow: 0 0 0;
+    background-color: #d0ff43;
+    border: none;
 }
 
 .home-recipe a {
@@ -148,7 +171,7 @@ a {
 }
 
 .home-recipe-text {
-    margin: 10px;
+    padding: 10px;
     text-align: left;
     font-family: serif;
 }
@@ -158,5 +181,6 @@ a {
 }
 
 footer a {
-    color: yellow;
+    color: black;
+    text-shadow: 2px 2px 1px #bbb;
 }

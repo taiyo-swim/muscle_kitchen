@@ -16,7 +16,13 @@ class My_pageController extends Controller
         $auth = Auth::user();  //ログインユーザー情報を取得
         $recipes = Recipe::whereIn('user_id', $auth)->orderBy('created_at', 'desc')->get();  //該当IDのユーザー(ログインユーザー)のレシピを取得
         
-        return view('my_page')->with(['my_user' => $auth, 'recipes' => $recipes]);
+        $follower_id = FollowUser::where('followed_user_id', Auth::id())->select('following_user_id')->get();  //フォロワー数を取得
+        $follower_count = count(User::whereIn('id', $follower_id)->orderBy('created_at', 'desc')->get());
+        
+        $follow_id = FollowUser::where('following_user_id', Auth::id())->select('followed_user_id')->get();
+        $follow_count = count(User::whereIn('id', $follow_id)->orderBy('created_at', 'desc')->get());
+        
+        return view('my_page')->with(['my_user' => $auth, 'recipes' => $recipes, 'follower_count' => $follower_count, 'follow_count' => $follow_count]);
     }
     
     public function show_my_recipe()  //自分が投稿したレシピの表示
@@ -25,7 +31,7 @@ class My_pageController extends Controller
         $my_recipes = Recipe::where('user_id', $user_id)->orderBy('created_at', 'desc')->paginate(10);  //該当IDのユーザー(ログインユーザー)のレシピを取得
         $count = count($my_recipes);
         
-        return view('my_recipe')->with(['my_recipes' => $my_recipes, 'count' => $count]);
+        return view('my_recipe')->with(['my_recipes' => $my_recipes, 'count' => $count, 'auth' => Auth::user()]);
     }
     
     public function show_nice_recipe()  //いいねしたレシピを表示
@@ -36,7 +42,7 @@ class My_pageController extends Controller
         //そのnicesテーブルのrecipe_idでrecipesテーブルに検索をかける
         $nice_recipes = Recipe::whereIn('id', $nice)->orderBy('created_at', 'desc')->paginate(10);  //$niceのデータが配列のためwhereInを使う
         $count = count($nice_recipes);
-        return view('my_nice_recipe')->with(['nice_recipes' => $nice_recipes, 'count' => $count]);
+        return view('my_nice_recipe')->with(['nice_recipes' => $nice_recipes, 'count' => $count, 'auth' => Auth::user()]);
     }
     
     public function show_my_follower()  //フォロワーを表示

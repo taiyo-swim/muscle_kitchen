@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+.search-keyword {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.search-keyword h5 {
+    color: white;
+    font-weight: bold;
+    font-family: 'Sawarabi Mincho', sans-serif;
+    text-shadow: 2px 2px 1px black;
+}
+
+.search-recipes {
+    padding: 20px 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-recipe {
+    margin: 5px;
+    padding: 10px;
+    width: 100%;
+    background-color: #fafae0;
+    display: flex;
+    border: dotted 3px #556b2f;
+    overflow: hidden;
+    box-shadow: 5px 5px 3px black;
+}
+
+.search-recipe-text {
+    margin: 5px;
+    width: 750px;
+    padding-left: 10px;
+    text-align: left;
+    font-family: serif;
+}
+
+.search-recipe a {
+    color: #556b2f;
+}
+
+.search-recipe img {
+    width: 25%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5%;
+    border: solid;
+    border-color: #556b2f;
+}
+
+.search-recipe-text .user_name {
+    padding-bottom: 5px;
+} 

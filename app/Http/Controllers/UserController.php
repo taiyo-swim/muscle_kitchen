@@ -40,7 +40,7 @@ class UserController extends Controller
         $user = User::find($user->id);  //リクエストされたユーザーのidと一致するuserテーブルのidを取得
         $recipes = Recipe::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);  //該当idのユーザーのレシピを取得
         $count = count($recipes);
-        return view('user_recipe')->with(['user' => $user, 'recipes' => $recipes, 'count' => $count]);
+        return view('user_recipe')->with(['user' => $user, 'recipes' => $recipes, 'count' => $count, 'auth' => Auth::user()]);
         }
     }
     
@@ -52,7 +52,7 @@ class UserController extends Controller
         //そのnicesテーブルのrecipe_idでrecipesテーブルに検索をかける
         $nice_recipes = Recipe::whereIn('id', $nice)->orderBy('created_at', 'desc')->paginate(10);  //$niceのデータが配列のためwhereInを使う
         $count = count($nice_recipes);
-        return view('user_nice_recipe')->with(['user' => $user, 'nice_recipes' => $nice_recipes, 'count' => $count]);
+        return view('user_nice_recipe')->with(['user' => $user, 'nice_recipes' => $nice_recipes, 'count' => $count, 'auth' => Auth::user()]);
         }
     }
     
