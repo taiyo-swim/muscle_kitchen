@@ -24,13 +24,15 @@ class RecipePostRequest extends FormRequest
     public function rules()  //レシピ投稿のバリデーションルールを記述
     {
         return [
-            'recipe_post.title' => 'required|string|max:50',
-            'recipe_post.explanation' => 'required|string|max:200',
-            'tags.*' => 'required|regex:/#([a-zA-z0-9０-９ぁ-んーァ-ンヴー一-龠]+)/u',
+            'recipe_post.title' => 'required|string|max:20',
+            'recipe_post.explanation' => 'required|string|max:100',
+            'tags.*' => 'required|regex:/#([a-zA-z0-9０-９ぁ-んーァ-ンヴー一-龠]+)/u|max:100',
             'image_path' => 'nullable',
-            'recipe_post.ingredients' => 'required|string',
-            'recipe_post.how_to_cook' => 'required|string',
-            'recipe_post.point' => 'nullable|string'
+            'recipe_post.serving' => 'required|int',
+            'recipe_post.ingredients' => 'required',
+            'recipe_post.amount_of_ingredients' => 'required',
+            'recipe_post.how_to_cook' => 'required',
+            'recipe_post.point' => 'nullable|string|max:100'
         ];
     }
 }

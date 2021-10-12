@@ -1,8 +1,6 @@
 @extends('layouts.app')  <!--該当ユーザーのレシピ一覧を表示-->
 
 @section('content')
-<body>
-    <main>
         <div class="search-keyword" style="color: white; font-weight: bold; font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px black;">
             <h2>{{ $user->name }}のレシピ：{{ $count }}品</h2>
         </div>
@@ -34,6 +32,4 @@
         <div class='paginate'>
                 {{ $recipes->links() }}  <!--ぺジネーションのリンクを追加-->
         </div>
-    </main>
-</body>
 @endsection

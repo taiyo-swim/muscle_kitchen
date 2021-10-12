@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
-    <main>
         <div class="user-title">
             <h2>マイページ</h>
         </div>
@@ -36,6 +34,4 @@
                 </div>
             </div>
         </div>
-    </main>
-</body>
 @endsection

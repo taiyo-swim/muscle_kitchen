@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
-    <main>
         <div class="visualandText">
             <div id="mainvisual">
                 <div class="mainvisual-left"><img src="ホームイメージ.jpg" alt=""></div>
@@ -52,7 +50,4 @@
                     {{ $recipes->links() }}  <!--ぺジネーションのリンクを追加-->
                 </div>
         </div>
-    </main>
-    
-</body>
 @endsection

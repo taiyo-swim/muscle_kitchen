@@ -16,6 +16,7 @@ class Recipe extends Model
     'title',
     'explanation',
     'image',
+    'serving',
     'ingredients',
     'how_to_cook',
     'point'

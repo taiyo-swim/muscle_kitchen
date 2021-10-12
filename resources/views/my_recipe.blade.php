@@ -1,9 +1,6 @@
 @extends('layouts.app')  <!--自分が投稿したレシピを表示-->
 
 @section('content')
-<body>
-    <main>
-    
         <div class="search-keyword" style="color: white; font-weight: bold; font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px black;">
                 <h2>マイレシピ：{{ $count }}品</p>
         </div>
@@ -35,7 +32,4 @@
         <div class='paginate'>
                 {{ $my_recipes->links() }}  <!--ぺジネーションのリンクを追加-->
         </div>
-    
-    </main>
-</body>
 @endsection

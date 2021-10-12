@@ -1,13 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
-    <main>
         <div class="search">
             <form class="search-form" method="get" action="/search">
             @csrf
                 <input type="text" name="keyword" class="search-box" placeholder="料理名、食材名">
-                <button type="submit" class="search-button">検索</button>
+                <button type="submit" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>
         
@@ -27,7 +25,7 @@
                     <div class="search-recipe-text">
                         <h3 class='title'><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a></h2>  <!--レシピのタイトル表示-->
                         <div class="user_name">
-                            @if($recipe->user_id === $auth)
+                            @if($recipe->user_id === $auth->id)
                                 <a href="/my_page">by {{ $recipe->user->name }}</a>  <!--自分の投稿したレシピの場合はマイページへ-->
                             @else
                                 <a href="/users/{{ $recipe->user->id }}">by {{ $recipe->user->name }}</a>  <!--それ以外の場合はユーザーページへ-->
@@ -42,6 +40,4 @@
         <div class='paginate'>
                 {{ $recipes->links() }}  <!--ぺジネーションのリンクを追加-->
         </div>
-    </main>
-</body>
 @endsection
