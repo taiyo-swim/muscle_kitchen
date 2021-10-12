@@ -41,10 +41,12 @@
     border-radius: 0 15px 15px 0;
     transition: .4s;
     text-shadow: 1px 1px 1px black;
+    box-shadow: 3px 3px 5px black;
 }
 
 .following a:hover {
     background: #636363;
+    box-shadow: 0 0 0;
 }
 
 .user-recipe {

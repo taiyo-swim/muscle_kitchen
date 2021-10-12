@@ -1,9 +1,6 @@
 @extends('layouts.app')  <!--ユーザーがいいねしたレシピを表示-->
 
 @section('content')
-<body>
-    <main>
-    
         <div class="search-keyword" style="color: white; font-weight: bold; font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px black;">
                 <h2>{{ $user->name }}いいねしたレシピ：{{ $count }}品</p>
         </div>
@@ -35,6 +32,4 @@
         <div class='paginate'>
             {{ $nice_recipes->links() }}  <!--ぺジネーションのリンクを追加-->
         </div>
-    </main>
-</body>
 @endsection

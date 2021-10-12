@@ -6,15 +6,15 @@ html {
     font-size: 100%;
 }
 
-body {
+/*body {*/
+/*}*/
+
+main {
+    min-height: 85vh;
     color: #2b2a27;
     background-image: url(/../floor-1866663_1280.jpg);
     background-color: rgba(255,255,255,0.2);
     background-blend-mode: lighten;
-}
-
-main {
-    padding-bottom: 80px;
 }
 
 footer {
@@ -33,11 +33,6 @@ footer {
 img {
     max-width: 100%;
 }
-
-a {
-    color: yellow;
-}
-
 
 /*main*/
 .visualandText {
@@ -113,6 +108,16 @@ a {
     box-shadow: 5px 5px 3px black;
 }
 
+.search-box:hover {
+    background-color: #fafae0;
+    box-shadow: 0 0 0;
+}
+
+.search-box:focus {
+    background-color: #fafae0;
+    box-shadow: inset 2px 2px 2px 0 #707070;
+}
+
 .search-button {
     height: 30px;
     width: 50px;
@@ -153,12 +158,13 @@ a {
 
 .home-recipe:hover {
     box-shadow: 0 0 0;
-    background-color: #d0ff43;
-    border: none;
+    /*background-color: #d0ff43;*/
+    opacity: 0.7;
 }
 
 .home-recipe a {
-    color: #556b2f;
+    color: black;
+    text-decoration: none;
 }
 
 .home-recipe img {

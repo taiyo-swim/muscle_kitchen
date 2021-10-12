@@ -1,52 +1,93 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>Recipe</title>
-    </head>
-    <body>
-        <h1 class="title">編集画面</h1>
-        <div class="content">
+@extends('layouts.app')
+
+@section('content')
+        <div class="form-title">
+            <h2>レシピ編集</h2>
+        </div>
+        
+        <div class="recipe-form">
             <form action="/recipes/{{ $recipe->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="content_title">
-                    <h2>レシピ名</h2>
-                    <input type="text" name="recipe_post[title]"  value="{{ $recipe->title }}"/>
+                <div class="form-recipe-title">
+                    <h4>レシピ名(20文字以内)</h4>
+                    <label>
+                        <input type="text" name="recipe_post[title]"  value="{{ $recipe->title }}"/>
+                    </label>
                     <p class="title__error" style="color:red">{{ $errors->first('recipe_post.title') }}</p>
                 </div>
-            <div class="content_explanation">
-                <h2>レシピの説明</h2>
-                <textarea name="recipe_post[explanation]">{{ $recipe->explanation }}</textarea>
-                <p class="explanation__error" style="color:red">{{ $errors->first('recipe_post.explanation') }}</p>
-            </div>
-            <div class="content_tags">
-                <h2>タグ</h>
-                <input id="tags" name="tags" type="text" value="{{$recipe->makeTag()}}"/>  <!--recipeモデルクラスのmakeTagメソッドを使用-->
-                <p class="tags__error" style="color:red">{{ $errors->first('tags') }}</p>
-            </div>
-            <div class="content_image">
-                <h2>画像</h2>
-                <input id="image" type="file" name="image"/>
-                <p class="image__error" style="color:red">{{ $errors->first('image') }}</p>
-            </div>
-            <div class="content_ingredients">
-                <h2>食材</h2>
-                <textarea name="recipe_post[ingredients]">{{ $recipe->ingredients }}</textarea>
-                <p class="ingredients__error" style="color:red">{{ $errors->first('recipe_post.ingredients') }}</p>
-            </div>
-            <div class="content_how_to_cook">
-                <h2>作り方</h2>
-                <textarea name="recipe_post[how_to_cook]">{{ $recipe->how_to_cook }}</textarea>
-                <p class="how_to_cook__error" style="color:red">{{ $errors->first('recipe_post.how_to_cook') }}</p>
-            </div>
-            <div class="content_point">
-                <h2>ポイント</h2>
-                <textarea name="recipe_post[point]">{{ $recipe->point }}</textarea>
-                <p class="point__error" style="color:red">{{ $errors->first('recipe_post.point') }}</p>
-            </div>
-            <input type="submit" value="アップデート"/>
-        </form>
-        <div class="back">[<a href="/recipes/{{ $recipe->id }}">戻る</a>]</div>
-    </body>
-</html>
+                
+                <div class="form-explanation">
+                    <h4>レシピの説明(100文字以内)</h4>
+                    <textarea id="textarea" name="recipe_post[explanation]">{{ $recipe->explanation }}</textarea>
+                    <p class="explanation__error" style="color:red">{{ $errors->first('recipe_post.explanation') }}</p>
+                </div>
+                
+                <div class="form-tags">
+                    <h4>タグ</h4>
+                    <input id="tags" name="tags" type="text" value="{{ $recipe->makeTag() }}"/>  <!--recipeモデルクラスのmakeTagメソッドを使用-->
+                    <p class="tags__error" style="color:red">{{ $errors->first('tags') }}</p>
+                </div>
+                
+                <div class="form-image">
+                    <h4>画像</h4>
+                    <label for="image">
+                            ファイルを選択
+                            <input id="image" type="file" name="image"/>
+                    </label>
+                    <span>ファイルが選択されていません</span>
+                    <p class="image__error" style="color:red">{{ $errors->first('image') }}</p>
+                </div>
+                
+                <div class="form-ingredients">
+                    <h4>食材</h4>
+                    <input id="serving" name="recipe_post[serving]" value="{{ $recipe->serving}}">人前
+                    <ol id="ingredients_order_list" style="list-style-type:none;">
+                        <li>
+                            <input id="ingredients" name="recipe_post[ingredients][]" value="{{ $recipe->ingredients}}">
+                            <input id="amount_of_ingredients" name="recipe_post[amount_of_ingredients][]" value="{{ $recipe->amount_of_ingredients}}">
+                        </li>
+                    </ol>
+                        <div class="form-add-button">
+                            <input type="button" value="+" id="ingredients_btn_add">
+                        </div>
+                    <p class="ingredients__error" style="color:red">{{ $errors->first('recipe_post.ingredients') }}</p>
+                </div>
+                
+                <div class="form-how_to_cook">
+                    <h4>作り方</h4>
+                    <ol id="how_to_cook_order_list">
+                            <li>
+                                <input  id="how_to_cook" name="recipe_post[how_to_cook][]" value="{{ $recipe->how_to_cook }}">
+                            </li>
+                        </ol>
+                        <div class="form-add-button">
+                            <input type="button" value="+" id="how_to_cook_btn_add">
+                        </div>
+                    <p class="how_to_cook__error" style="color:red">{{ $errors->first('recipe_post.how_to_cook') }}</p>
+                </div>
+                
+                <div class="form-point">
+                    <h4>ポイント(100文字以内)</h4>
+                    <textarea id="textarea" name="recipe_post[point]">{{ $recipe->point }}</textarea>
+                    <p class="point__error" style="color:red">{{ $errors->first('recipe_post.point') }}</p>
+                </div>
+                
+                <div class="form-submit">
+                    <input type="submit" value="アップデート"/>
+                </div>
+            </form>
+        </div>
+        
+        <script>
+        window.addEventListener('DOMContentLoaded', function()   {{--ファイルパス表示用の処理--}}
+        {
+            $('input').on('change', function ()
+            {
+                var file = $(this).prop('files')[0];
+                $('span').text(file.name);
+            });
+        });
+        </script>
+        
+@endsection

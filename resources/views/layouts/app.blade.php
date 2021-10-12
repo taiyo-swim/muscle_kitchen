@@ -11,8 +11,9 @@
 
     <!-- Scripts -->
     {{--<script src="{{ asset('js/app.js') }}" defer></script>--}}
-    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('/js/create_recipe.js') }}"></script>
+    
 
 
     <!-- Fonts -->
@@ -25,6 +26,8 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     <link href="{{ asset('css/search-recipe.css') }}" rel="stylesheet">
     <link href="{{ asset('css/user_page.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/show.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">

@@ -1,0 +1,221 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+.form-title {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.form-title h2 {
+    color: white;
+    text-shadow: 2px 2px 1px black;
+    font-family: 'Sawarabi Mincho', sans-serif;
+    font-weight: bold;
+}
+
+.recipe-form form {
+    margin: 50px 150px;
+    padding: 20px;
+    background-color: #ffdbc9;
+    box-shadow: 5px 5px 3px black;
+    font-family: serif;
+    border: dotted 3px #556b2f;
+}
+
+.form-recipe-title input[type='text'] {
+    width: 20em;
+    box-sizing: border-box;
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    border: 1px solid #ffdbc9;
+    box-shadow: 2px 2px 2px 0 #707070 inset;
+    border-radius: 4px;
+}
+
+.form-recipe-title input[type='text']:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 2px 0 #c9c9c9;
+    background-color: #fafae0;
+}
+
+#textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    border: 1px solid #ffdbc9;
+    box-shadow: 2px 2px 2px 0 #707070 inset;
+    border-radius: 4px;
+    resize: none;
+    /*height: 50px;*/
+}
+
+#textarea:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 2px 0 #c9c9c9;
+    background-color: #fafae0;
+}
+
+.form-tags input[type='text'] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    border: 1px solid #ffdbc9;
+    box-shadow: 2px 2px 2px 0 #707070 inset;
+    border-radius: 4px;
+}
+
+.form-tags input[type='text']:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 2px 0 #c9c9c9;
+    background-color: #fafae0;
+}
+
+.form-image label {
+    padding: 5px 20px;
+    color: white;
+    background-color: #384878;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px black;
+}
+
+.form-image label:hover {
+    box-shadow: 0 0 0;
+    opacity: 0.7;
+}
+
+.form-image input[type="file"] {
+    display: none;
+}
+
+.form-image span {
+    margin-top: 10px;
+}
+
+#serving {
+    width: 2em;
+    box-sizing: border-box;
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    border: 1px solid #ffdbc9;
+    box-shadow: 2px 2px 2px 0 #707070 inset;
+    border-radius: 4px;
+}
+
+#serving:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 2px 0 #c9c9c9;
+    background-color: #fafae0;
+}
+
+#ingredients_order_list {
+    margin-left: 170px;
+}
+
+#ingredients {
+    width: 15em;
+    box-sizing: border-box;
+    margin-left: 50px;
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    border: 1px solid #ffdbc9;
+    box-shadow: 2px 2px 2px 0 #707070 inset;
+    border-radius: 4px;
+}
+
+#ingredients:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 2px 0 #c9c9c9;
+    background-color: #fafae0;
+}
+
+#amount_of_ingredients {
+    width: 10em;
+    box-sizing: border-box;
+    margin-left: 50px;
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    border: 1px solid #ffdbc9;
+    box-shadow: 2px 2px 2px 0 #707070 inset;
+    border-radius: 4px;
+}
+
+#amount_of_ingredients:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 2px 0 #c9c9c9;
+    background-color: #fafae0;
+}
+
+.form-add-button {
+    text-align: center;
+}
+
+.form-add-button input {
+    width: 50px;
+    color: white;
+    background-color: #384878;
+    border: none;
+    border-bottom: 3px solid black;
+}
+    
+.form-add-button input:hover {
+    margin-top: 3px;
+    color: white;
+    background: #000066;
+    border-bottom: 2px solid #000033;
+}
+
+#how_to_cook {
+    width: 95%;
+    /*box-sizing: border-box;*/
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    border: 1px solid #ffdbc9;
+    box-shadow: 2px 2px 2px 0 #707070 inset;
+    border-radius: 4px;
+}
+
+#how_to_cook:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 2px 0 #c9c9c9;
+    background-color: #fafae0;
+}
+
+.form-submit {
+    text-align: center;
+}
+
+.form-submit input {
+    width: 10%;
+    color: #fff;
+    border-top: 4px solid #48ecc4;
+    border-right: 4px solid #0a5f4a;
+    border-bottom: 4px solid #0f745b;
+    border-left: 4px solid #8cf9de;
+    border-radius: 0;
+    background: #11a37f;
+}
+
+.form-submit input:hover {
+    color: #fff;
+    border-top: 4px solid #0f745b;
+    border-right: 4px solid #8cf9de;
+    border-bottom: 4px solid #48ecc4;
+    border-left: 4px solid #0a5f4a;
+}

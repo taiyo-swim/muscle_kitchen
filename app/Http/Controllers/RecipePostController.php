@@ -90,8 +90,10 @@ class RecipePostController extends Controller
         $input = $request['recipe_post'];
         $recipe->title = $input['title'];
         $recipe->explanation = $input['explanation'];
-        $recipe->ingredients = $input['ingredients'];
-        $recipe->how_to_cook = $input['how_to_cook'];
+        $recipe->serving = $input['serving'];
+        $recipe->ingredients = implode("\n", $input['ingredients']);
+        $recipe->amount_of_ingredients = implode("\n", $input['amount_of_ingredients']);
+        $recipe->how_to_cook = implode("\n・", $input['how_to_cook']);
         $recipe->point = $input['point'];
         $recipe->user_id = auth()->id();
         
@@ -137,8 +139,10 @@ class RecipePostController extends Controller
         $input_post = $request['recipe_post'];
         $recipe->title = $input_post['title'];
         $recipe->explanation = $input_post['explanation'];
-        $recipe->ingredients = $input_post['ingredients'];
-        $recipe->how_to_cook = $input_post['how_to_cook'];
+        $recipe->serving = $input_post['serving'];
+        $recipe->ingredients = implode("\n", $input_post['ingredients']);
+        $recipe->amount_of_ingredients = implode("\n", $input_post['amount_of_ingredients']);
+        $recipe->how_to_cook = implode("\n・", $input_post['how_to_cook']);
         $recipe->point = $input_post['point'];
         
         if ($request->file('image')) {  //画像が変更されたら

@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+
+.show-recipe {
+    margin: 50px 150px;
+    padding: 20px;
+    background-color: #fafae0;
+    box-shadow: 5px 5px 3px black;
+    font-family: serif;
+    border: dotted 3px #556b2f;
+}
+
+
+.recipe-information {
+    float: right;
+    width: 600px;
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+.show-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.recipe-information h3 {
+    font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+.show-user_name {
+    margin-bottom: 20px;
+}
+
+.show-user_name a {
+    color: #556b2f;
+}
+
+.show-explanation {
+    margin-top: 5px;
+}
+
+.recipe-button {
+    display: flex;
+    justify-content: space-around;
+    margin: 25px 50px;
+}
+
+.delete span {
+    display: inline-block;
+    padding: 5px 15px;
+    text-decoration: nane;
+    color: red;
+    border: dashed 1px red;
+    border-radius: 3px;
+    transition: .4s;
+    box-shadow: 3px 3px 5px black;
+}
+
+.delete span:hover {
+    border-style: dotted;
+    color: red;
+    background-color: #ffb6c1;
+    box-shadow: 0 0 0;
+}
+
+.edit a {
+    display: inline-block;
+    padding: 5px 15px;
+    text-decoration: nane;
+    color: blue;
+    border: dashed 1px blue;
+    border-radius: 3px;
+    transition: .4s;
+    text-decoration: none;
+    box-shadow: 3px 3px 5px black;
+}
+
+.edit a:hover {
+    border-style: dotted;
+    color: blue;
+    background-color: #f2fcff;
+    box-shadow: 0 0 0;
+}
+
+.show-recipe img {
+    width: 380px;
+    margin-right: 20px;
+    height: 350px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    border-radius: 5%;
+    border: solid;
+    border-color: #556b2f;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags button {
+    display: inline-block;
+    margin: 0 .1em .6em 0;
+    padding: 5px;
+    margin: 3px;
+    text-decoration: nane;
+    color: #228b22;
+    background-color: #fafae0;
+    border: 1px solid #228b22;
+    border-radius: 2em;
+    box-shadow: 3px 3px 5px black;
+    font-weight: bold;
+}
+
+.tags button:before {
+    content: "#";
+}
+
+.tags button:hover {
+    background-color: #bfbc8f;
+    box-shadow: 0 0 0;
+}
+
+.cook-recipe {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ingredients-detail {
+    margin: 10px 50px;
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    color: #aa0000;
+}
+
+.ingredients-detail h5 {
+    
+}
+
+.how_to_cook {
+    margin-left: 100px;
+}
