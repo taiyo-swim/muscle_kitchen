@@ -43,8 +43,8 @@
                     <input id="serving" name="recipe_post[serving]">人前
                     <ol id="ingredients_order_list" style="list-style-type:none;">
                         <li>
-                            <input id="ingredients" name="recipe_post[ingredients][]" placeholder="鶏むね肉">
-                            <input id="amount_of_ingredients" name="recipe_post[amount_of_ingredients][]" placeholder="200g">
+                            <input type="text" id="ingredients" name="recipe_post[ingredients][]" placeholder="鶏むね肉">
+                            <input type="text" id="amount_of_ingredients" name="recipe_post[amount_of_ingredients][]" placeholder="200g">
                         </li>
                     </ol>
                         <div class="form-add-button">
@@ -57,7 +57,7 @@
                     <h4>作り方</h4>
                     <ol id="how_to_cook_order_list">
                         <li>
-                            <input  id="how_to_cook" name="recipe_post[how_to_cook][]" placeholder="鶏むね肉を食べやすい大きさに切る。">
+                            <input  type="text" id="how_to_cook" name="recipe_post[how_to_cook][]" placeholder="鶏むね肉を食べやすい大きさに切る。">
                         </li>
                     </ol>
                     <div class="form-add-button">

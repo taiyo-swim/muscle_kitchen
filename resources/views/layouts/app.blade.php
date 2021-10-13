@@ -76,10 +76,19 @@
                         @else
                             <li class="nav-item dropdown" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px #bbb;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    @if (Auth::user()->image_path)
+                                        <img id="home-user-image" src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/{{ Auth::user()->image_path }}"/>
+                                    @else
+                                        <img id="home-user-image" src="{{asset('defaultuser.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
+                                    @endif
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    <a class="dropdown-item" href="/my_page/edit_user">
+                                        {{ __('ユーザー情報編集') }}
+                                    </a>
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -112,5 +121,17 @@
         
     </div>
     <script src="{{ asset('/js/app.js') }}" defer></script>
+    
+    <style>
+        #home-user-image {
+            object-fit: cover;
+                object-position: center top;
+                float: left;
+                margin: 0 5px 5px 0; 
+                border-radius: 50%; 
+                width: 30px; 
+                height: 30px;
+        }
+    </style>
 </body>
 </html>

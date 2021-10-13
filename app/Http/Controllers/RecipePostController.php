@@ -99,7 +99,7 @@ class RecipePostController extends Controller
         
         if ($request->file('image')) {
         $image = $request->file('image');  //s3へ画像をアップロード
-        $path = Storage::disk('s3')->putFile('/', $image, 'public');  //putFile(PATH,$file)で指定したPATH（バケットの'/'フォルダ）にファイルを保存※第三引数に'public'を入れないと外部からのアクセスができない
+        $path = Storage::disk('s3')->putFile('recipes', $image, 'public');  //putFile(PATH,$file)で指定したPATH（バケットの'/'フォルダ）にファイルを保存※第三引数に'public'を入れないと外部からのアクセスができない
         $recipe->image_path = $path;  //アップロードした画像のパスを取得
         }
         
@@ -113,8 +113,19 @@ class RecipePostController extends Controller
     
     public function edit(Recipe $recipe)  //レシピ編集画面の表示
     {
+        
+        $recipe_ingredients = explode("\n", $recipe->ingredients);
+        $ingredients_count = count($recipe_ingredients);
+        
+        $recipe_amount_of_ingredients = explode("\n", $recipe->amount_of_ingredients);
+        $amount_of_ingredients_count = count($recipe_amount_of_ingredients);
+        
+        $recipe_how_to_cook = explode("\n・", $recipe->how_to_cook);
+        $how_to_cook_count = count($recipe_how_to_cook);
+        
         $this->authorize('update', $recipe);  //ポリシーを元に投稿したユーザー以外は編集画面が表示されないようにアクションを認可
-        return view('edit-recipe')->with(['recipe' => $recipe]);
+        return view('edit-recipe')->with(['recipe' => $recipe, 'recipe_ingredients' => $recipe_ingredients, 'recipe_amount_of_ingredients' => $recipe_amount_of_ingredients, 'recipe_how_to_cook' => $recipe_how_to_cook,
+        'ingredients_count' => $ingredients_count, 'amount_of_ingredients_count' => $amount_of_ingredients_count, 'how_to_cook_count' => $how_to_cook_count]);
     }
     
     //レシピ投稿編集の実行
@@ -148,7 +159,7 @@ class RecipePostController extends Controller
         if ($request->file('image')) {  //画像が変更されたら
         $s3_delete = Storage::disk('s3')->delete($recipe->image_path);  //変更前の画像をs3から削除
         $image = $request->file('image');  //s3へ画像をアップロード
-        $path = Storage::disk('s3')->putFile('/', $image, 'public');  //putFile(PATH,$file)で指定したPATH（バケットの'/'フォルダ）にファイルを保存※第三引数に'public'を入れないと外部からのアクセスができない
+        $path = Storage::disk('s3')->putFile('recipes', $image, 'public');  //putFile(PATH,$file)で指定したPATH（バケットの'/'フォルダ）にファイルを保存※第三引数に'public'を入れないと外部からのアクセスができない
         $recipe->image_path = $path;  //アップロードした画像のパスを取得
         }
         

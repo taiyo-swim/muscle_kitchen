@@ -11,9 +11,23 @@
         @foreach ($follows as $follow)
             <div id="following-user" class="user_follower">
             @if ($follow->id === $auth)  <!--フォローが自分のとき-->
+                <div class="user-image">
+                    @if ($follow->image_path)
+                        <img src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/{{ $follow->image_path }}"/>
+                    @else
+                        <img src="{{asset('defaultuser.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
+                    @endif
+                </div>
                 <h3 class="user_name"><a href="/my_page">{{ $follow->name }}</a></h3>
             @else  <!--フォローが自分ではないとき-->
-                <h3 class="user_name"><a href="/users/{{ $follow->id }}">{{ $follow->name }}</a></h3>
+                <div class="user-image">
+                    @if ($follow->image_path)
+                        <img src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/{{ $follow->image_path }}"/>
+                    @else
+                        <img src="{{asset('defaultuser.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
+                    @endif
+                </div>
+                <h3 class="user_name" style="margin-top: 13px;"><a href="/users/{{ $follow->id }}">{{ $follow->name }}</a></h3>
             @endif
             </div>
         @endforeach
@@ -23,4 +37,18 @@
         {{ $follows->links() }}  <!--ぺジネーションのリンクを追加-->
     </div>
 </div>
+
+        <style>
+            .user-image img {
+                object-fit: cover;
+                object-position: center top;
+                float: left;
+                margin-right: 20px; 
+                border-radius: 50%; 
+                width: 50px; 
+                height: 50px;
+                border: solid;
+                border-color: black;
+            }
+        </style>
 @endsection

@@ -43,10 +43,19 @@
                     <h4>食材</h4>
                     <input id="serving" name="recipe_post[serving]" value="{{ $recipe->serving}}">人前
                     <ol id="ingredients_order_list" style="list-style-type:none;">
-                        <li>
-                            <input id="ingredients" name="recipe_post[ingredients][]" value="{{ $recipe->ingredients}}">
-                            <input id="amount_of_ingredients" name="recipe_post[amount_of_ingredients][]" value="{{ $recipe->amount_of_ingredients}}">
-                        </li>
+                        @if ($amount_of_ingredients_count > 1)
+                            @for ($i = 0; $i < $ingredients_count; $i++)
+                                <li>
+                                    <input id="ingredients" name="recipe_post[ingredients][] " value="{{ $recipe_ingredients[$i] }}">
+                                    <input id="amount_of_ingredients" name="recipe_post[amount_of_ingredients][]" value="{{ $recipe_amount_of_ingredients[$i] }}">
+                                </li>
+                            @endfor
+                        @else
+                            <li>
+                                <input id="ingredients" name="recipe_post[ingredients][] " value="{{ $recipe_ingredients[0] }}">
+                                <input id="amount_of_ingredients" name="recipe_post[amount_of_ingredients][]" value="{{ $recipe_amount_of_ingredients[0] }}">
+                            </li>
+                        @endif
                     </ol>
                         <div class="form-add-button">
                             <input type="button" value="+" id="ingredients_btn_add">
@@ -57,9 +66,17 @@
                 <div class="form-how_to_cook">
                     <h4>作り方</h4>
                     <ol id="how_to_cook_order_list">
+                        @if ($how_to_cook_count > 1)
+                            @for ($i = 0; $i < $how_to_cook_count; $i++)
+                                <li>
+                                    <input  id="how_to_cook" name="recipe_post[how_to_cook][]" value="{{ $recipe_how_to_cook[$i] }}">
+                                </li>
+                            @endfor
+                        @else
                             <li>
-                                <input  id="how_to_cook" name="recipe_post[how_to_cook][]" value="{{ $recipe->how_to_cook }}">
+                                <input  id="how_to_cook" name="recipe_post[how_to_cook][]" value="{{ $recipe_how_to_cook[0] }}">
                             </li>
+                        @endif
                         </ol>
                         <div class="form-add-button">
                             <input type="button" value="+" id="how_to_cook_btn_add">
