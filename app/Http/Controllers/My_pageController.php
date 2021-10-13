@@ -8,6 +8,7 @@ use App\Nice;
 use Illuminate\Support\Facades\Auth;
 use App\FollowUser;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class My_pageController extends Controller
 {
@@ -23,6 +24,29 @@ class My_pageController extends Controller
         $follow_count = count(User::whereIn('id', $follow_id)->orderBy('created_at', 'desc')->get());
         
         return view('my_page')->with(['my_user' => $auth, 'recipes' => $recipes, 'follower_count' => $follower_count, 'follow_count' => $follow_count]);
+    }
+    
+    public function edit_user()  //ユーザー情報編集画面表示
+    {
+        return view('edit-user')->with(['user' => Auth::user() ]);
+    }
+    
+    public function update_user(Request $request) 
+    {
+        $user_form = $request->all();
+        $user = Auth::user();
+        
+        unset($user_form['_token']);  //不要な「_token」の削除
+        
+        if ($request->file('image')) {  //画像が変更されたら
+        $s3_delete = Storage::disk('s3')->delete($user->image_path);  //変更前の画像をs3から削除
+        $image = $request->file('image');  //s3へ画像をアップロード
+        $path = Storage::disk('s3')->putFile('profile', $image, 'public');  //putFile(PATH,$file)で指定したPATH（バケットの'/'フォルダ）にファイルを保存※第三引数に'public'を入れないと外部からのアクセスができない
+        $user->image_path = $path;  //アップロードした画像のパスを取得
+        }
+        
+        $user->fill($user_form)->save();  //保存
+        return redirect('/my_page');
     }
     
     public function show_my_recipe()  //自分が投稿したレシピの表示

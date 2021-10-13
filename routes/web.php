@@ -40,6 +40,8 @@ Route::post('/users/{user}/unfollow', 'UserController@unfollow');  //フォロ�
 Route::get('/users/{user}/follower', 'UserController@show_follower');  //ユーザーのフォロワー一覧を表示
 Route::get('/users/{user}/follow', 'UserController@show_follow');  //ユーザーのフォロー一覧を表示
 Route::get('/my_page', 'My_pageController@index');  //マイページの表示
+Route::get('/my_page/edit_user', 'My_pageController@edit_user');  //ユーザー情報編集画面表示
+Route::put('my_page/', 'My_pageController@update_user');  //ユーザー情報編集実行
 Route::get('/my_page/my_recipes', 'My_pageController@show_my_recipe');  //マイレシピの表示
 Route::get('/my_page/my_nice_recipes', 'My_pageController@show_nice_recipe');  //いいねしたレシピの表示
 Route::get('my_page/follower', 'My_pageController@show_my_follower');  //フォロワー一覧の表示

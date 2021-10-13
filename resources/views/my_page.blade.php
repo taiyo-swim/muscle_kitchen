@@ -6,6 +6,13 @@
         </div>
         
         <div class="user-information">
+            <div class="user-image">
+            @if ($my_user->image_path)
+                <img src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/{{ $my_user->image_path }}"/>
+            @else
+                <img src="{{asset('defaultuser.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
+            @endif
+            </div>
             <h4>ユーザー名：{{ $my_user->name }}</h4>
             <h4>メールアドレス：{{ $my_user->email }}</h4>
             <div class="following">
@@ -13,6 +20,7 @@
                 <h5><a class="follow" href="/my_page/follow">{{ $follow_count }}フォロー</a></h5>
             </div>
         </div>
+        
         
         <div class="user-recipe">
             <h4><a href="/my_page/my_recipes">マイレシピ</a></h4>
@@ -34,4 +42,18 @@
                 </div>
             </div>
         </div>
+        
+        <style>
+            .user-image img {
+                object-fit: cover;
+                object-position: center top;
+                float: left;
+                margin: 15px 30px 0 0; 
+                border-radius: 50%; 
+                width: 100px; 
+                height: 100px;
+                border: solid;
+                border-color: black;
+            }
+        </style>
 @endsection
