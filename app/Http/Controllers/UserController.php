@@ -82,7 +82,7 @@ class UserController extends Controller
         //follow_usersテーブルのfollowed_user_idにユーザーのIDで検索をかけ、following_user_idだけを取得
         $follower_id = FollowUser::where('followed_user_id', $user->id)->select('following_user_id')->get();
         //usersテーブルのidにフォロワーのIDで検索をかけてフォロワーのユーザー情報を取得
-        $follower = $user->whereIn('id', $follower_id)->orderBy('created_at', 'desc')->paginate(10);
+        $follower = $user->whereIn('id', $follower_id)->orderBy('created_at', 'desc')->paginate(20);
         
         $follower_count = count($follower);
         
@@ -92,7 +92,7 @@ class UserController extends Controller
     public function show_follow(User $user)  //ユーザーのフォローを表示
     {
         $follow_id = FollowUser::where('following_user_id', $user->id)->select('followed_user_id')->get();
-        $follow = $user->whereIn('id', $follow_id)->orderBy('created_at', 'desc')->paginate(10);
+        $follow = $user->whereIn('id', $follow_id)->orderBy('created_at', 'desc')->paginate(20);
         
         $follow_count = count($follow);
         

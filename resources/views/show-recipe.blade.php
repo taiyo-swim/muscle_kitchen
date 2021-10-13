@@ -38,7 +38,7 @@
                     @if($recipe->user->id === $auth->id)
                         <h5><a href="/my_page">by {{ $recipe->user->name }}</a></h5>  <!--自分の投稿したレシピの場合はマイページへ-->
                     @else
-                        <h5><a href="/users/{{ $recipe->user->id }}">{{ $recipe->user->name }}</a></h5> <!--それ以外の場合はユーザーページへ-->
+                        <h5><a href="/users/{{ $recipe->user->id }}">by {{ $recipe->user->name }}</a></h5> <!--それ以外の場合はユーザーページへ-->
                     @endif
                 </div>
                 
@@ -102,10 +102,6 @@
                 <h4><i class="fa fa-arrow-circle-right"></i> ポイント</h4>
                 <p>{{ $recipe->point }}</p>
             </div>
-        </div>
-        
-        <div class="back">
-            <a href="/recipes/{{ $recipe->id }}">戻る</a>
         </div>
     
     <script>

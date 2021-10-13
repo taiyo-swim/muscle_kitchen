@@ -48,7 +48,7 @@ class My_pageController extends Controller
     public function show_my_follower()  //フォロワーを表示
     {
         $follower_id = FollowUser::where('followed_user_id', Auth::id())->select('following_user_id')->get();
-        $follower = User::whereIn('id', $follower_id)->orderBy('created_at', 'desc')->paginate(10);
+        $follower = User::whereIn('id', $follower_id)->orderBy('created_at', 'desc')->paginate(20);
         
         $follower_count = count($follower);
         
@@ -58,7 +58,7 @@ class My_pageController extends Controller
     public function show_my_follow()  //フォローを表示
     {
         $follow_id = FollowUser::where('following_user_id', Auth::id())->select('followed_user_id')->get();
-        $follow = User::whereIn('id', $follow_id)->orderBy('created_at', 'desc')->paginate(10);
+        $follow = User::whereIn('id', $follow_id)->orderBy('created_at', 'desc')->paginate(20);
         
         $follow_count = count($follow);
         
