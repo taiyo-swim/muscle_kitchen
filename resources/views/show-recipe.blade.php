@@ -6,32 +6,19 @@
             <div class="recipe-information">      
                 <div class="show-title">
                     <h3>{{ $recipe->title }}</h3>
-                            <div class="nice">
-                                <span>
-                                    <i class="fas fa-heart fa-fw fa-lg my-red faa-pulse animated" style="color: #ce5242"></i>
-                                     
-                                    <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
-                                    @if($nice)
-                                    <!-- 「いいね」取消用ボタンを表示 -->
-                                    	<a href="/recipes/unnice/{{ $recipe->id }}" class="btn btn-success btn-sm">
-                                    		いいね
-                                    		<!-- 「いいね」の数を表示 -->
-                                    		<span class="badge">
-                                    			{{ $recipe->nices->count() }}
-                                    		</span>
-                                    	</a>
-                                    @else
-                                    <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
-                                    	<a href="/recipes/nice/{{ $recipe->id }}" class="btn btn-secondary btn-sm">
-                                    		いいね
-                                    		<!-- 「いいね」の数を表示 -->
-                                    		<span class="badge">
-                                    			{{ $recipe->nices->count() }}
-                                    		</span>
-                                    	</a>
-                                    @endif
-                                </span>
-                            </div>
+                        <div class="nice">
+                            @if($nice_model->nice_exist(Auth::user()->id, $recipe->id))
+                            <p class="favorite-marke">
+                                <a class="js-nice-toggle loved" href="" data-recipeid="{{ $recipe->id }}" style="font-size: 1.7em;"><i class="fas fa-heart"></i></a>
+                                <span class="nicesCount" style="font-size: 1.5em;">{{$recipe->nices_count}}</span>
+                            </p>
+                            @else
+                            <p class="favorite-marke">
+                                <a class="js-nice-toggle" href="" data-recipeid="{{ $recipe->id }}" style="font-size: 1.7em; color: #dddddd;"><i class="fas fa-heart"></i></a>
+                                <span class="nicesCount" style="font-size: 1.5em;">{{$recipe->nices_count}}</span>
+                            </p>
+                            @endif​ 
+                        </div>
                 </div>
                 
                 <div class="show-user_name">

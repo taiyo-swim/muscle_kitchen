@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('./fontawesome');
+require('./ajaxnice.js');
 
 window.Vue = require('vue');
 //import Vue from 'vue';

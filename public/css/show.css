@@ -22,12 +22,20 @@
 .show-title {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding-top: 20px;
     margin-bottom: 10px;
 }
 
 .recipe-information h3 {
     font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+.nice p {
+    padding-right: 50px;
+}
+
+.loved {
+  color: red !important;
 }
 
 .show-user_name {

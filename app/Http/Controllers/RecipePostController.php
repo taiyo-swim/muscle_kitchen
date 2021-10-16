@@ -53,8 +53,10 @@ class RecipePostController extends Controller
     //特定IDのrecipeを表示する
     public function show(Recipe $recipe)  // 引数の$postはid=1のPostインスタンス
     {
-        $nice=Nice::where('recipe_id', $recipe->id)->where('user_id', auth()->user()->id)->first();  //いいね表示用のコードを追加
-        return view('show-recipe')->with(['recipe' => $recipe, 'nice' => $nice, 'auth' => Auth::user()]);
+        // $nice=Nice::where('recipe_id', $recipe->id)->where('user_id', auth()->user()->id)->first();  //いいね表示用のコードを追加
+        $nice_count = $recipe->loadCount('nices');
+        $nice_model = new Nice;
+        return view('show-recipe')->with(['recipe' => $recipe, 'nice_model' => $nice_model, 'auth' => Auth::user()]);
     }
     
     //レシピ投稿画面を表示
