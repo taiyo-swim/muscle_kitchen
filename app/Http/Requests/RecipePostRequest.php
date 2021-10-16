@@ -29,9 +29,9 @@ class RecipePostRequest extends FormRequest
             'tags.*' => 'required|regex:/#([a-zA-z0-9０-９ぁ-んーァ-ンヴー一-龠]+)/u|max:100',
             'image_path' => 'nullable',
             'recipe_post.serving' => 'required|int',
-            'recipe_post.ingredients' => 'required',
-            'recipe_post.amount_of_ingredients' => 'required',
-            'recipe_post.how_to_cook' => 'required',
+            'recipe_post.ingredients.0' => 'required',
+            'recipe_post.amount_of_ingredients.0' => 'required',
+            'recipe_post.how_to_cook.0' => 'required',
             'recipe_post.point' => 'nullable|string|max:100'
         ];
     }

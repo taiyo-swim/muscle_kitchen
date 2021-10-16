@@ -42,6 +42,7 @@
                 <div class="form-ingredients">
                     <h4>食材</h4>
                     <input id="serving" name="recipe_post[serving]" value="{{ $recipe->serving}}">人前
+                    <p class="serving__error" style="color:red">{{ $errors->first('recipe_post.serving') }}</p>
                     <ol id="ingredients_order_list" style="list-style-type:none;">
                         @if ($amount_of_ingredients_count > 1)
                             @for ($i = 0; $i < $ingredients_count; $i++)
@@ -57,10 +58,11 @@
                             </li>
                         @endif
                     </ol>
-                        <div class="form-add-button">
-                            <input type="button" value="+" id="ingredients_btn_add">
-                        </div>
-                    <p class="ingredients__error" style="color:red">{{ $errors->first('recipe_post.ingredients') }}</p>
+                    <p class="ingredients__error" style="color:red">{{ $errors->first('recipe_post.ingredients.0') }}</p>
+                    <p class="amount_of_ingredients__error" style="color:red">{{ $errors->first('recipe_post.amount_of_ingredients.0') }}</p>
+                    <div class="form-add-button">
+                        <input type="button" value="+" id="ingredients_btn_add">
+                    </div>
                 </div>
                 
                 <div class="form-how_to_cook">
@@ -77,11 +79,11 @@
                                 <input  id="how_to_cook" name="recipe_post[how_to_cook][]" value="{{ $recipe_how_to_cook[0] }}">
                             </li>
                         @endif
-                        </ol>
-                        <div class="form-add-button">
-                            <input type="button" value="+" id="how_to_cook_btn_add">
-                        </div>
-                    <p class="how_to_cook__error" style="color:red">{{ $errors->first('recipe_post.how_to_cook') }}</p>
+                    </ol>
+                    <p class="how_to_cook__error" style="color:red">{{ $errors->first('recipe_post.how_to_cook.0') }}</p>
+                    <div class="form-add-button">
+                        <input type="button" value="+" id="how_to_cook_btn_add">
+                    </div>
                 </div>
                 
                 <div class="form-point">

@@ -30,8 +30,9 @@ Route::get('/recipes/{recipe}', 'RecipePostController@show');  ///recipes/{recip
 Route::get('/recipes/{recipe}/edit', 'RecipePostController@edit');  //レシピ編集画面の表示
 Route::put('/recipes/{recipe}', 'RecipePostController@update');  //レシピ投稿編集の実行
 Route::delete('/recipes/{recipe}', 'RecipePostController@delete');  //レシピ投稿削除の実行
-Route::get('recipes/nice/{recipe}', 'NiceController@nice')->name('nice');  //いいねの実行
-Route::get('recipes/unnice/{recipe}', 'NiceController@unnice')->name('unnice');  //いいねの取り消し
+// Route::get('recipes/nice/{recipe}', 'NiceController@nice')->name('nice');  //いいねの実行
+// Route::get('recipes/unnice/{recipe}', 'NiceController@unnice')->name('unnice');  //いいねの取り消し
+Route::post('recipes/{recipe}/nice', 'NiceController@ajaxnice');
 Route::get('/users/{user}', 'UserController@index');  //ユーザーページの表示
 Route::get('/users/{user}/recipes', 'UserController@show_user_recipe');  //ユーザーのレシピの表示
 Route::get('/users/{user}/nice_recipes', 'UserController@show_user_nice_recipe');  //ユーザーがいいねしたレシピの表示
