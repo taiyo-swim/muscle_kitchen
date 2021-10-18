@@ -84,7 +84,7 @@ img {
 .search {
     text-align: center;
     padding-left: 200px;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
 }
 
 .search-form {
@@ -135,6 +135,7 @@ img {
 }
 
 .home-recipes {
+    margin-top: 70px;
     padding: 20px 100px;
     display: flex;
     flex-wrap: wrap;
@@ -150,8 +151,8 @@ img {
     width: 30%;
     height: 310px;
     overflow: hidden;
+    border-radius: 1rem;
     background-color: #fafae0;
-    border-radius: 5%;
     border: dotted 3px #556b2f;
     box-shadow: 5px 5px 3px black;
 }
@@ -173,7 +174,7 @@ img {
     object-fit: cover;
     margin: 0 auto;
     margin-bottom: 10px;
-    border-radius: 5%;
+    border-radius: 1rem;
 }
 
 .home-recipe-text {
@@ -189,4 +190,121 @@ img {
 footer a {
     color: black;
     text-shadow: 2px 2px 1px #bbb;
+}
+
+/*項目検索*/
+.click-search {
+    margin: 0 200px 0 200px;
+    font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+/*ラジオボタン*/
+input[type=radio] {
+    display: none;
+}
+
+.recipe_item {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 30px;
+    position: relative;
+    width: auto;
+}
+
+.recipe_item::before {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 16px;
+    left: 6px;
+    margin-top: -7px;
+    position: absolute;
+    top: 50%;
+    width: 16px;
+}
+
+.recipe_item::after {
+   background: #fedd1e;
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 10px;
+    left: 9px;
+    margin-top: -4px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: scale3d(.3,.3,1);
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+    width: 10px;
+}
+
+input[type=radio]:checked + .recipe_item::before {
+    border-color: #666;
+}
+
+input[type=radio]:checked + .recipe_item::after {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+}
+
+.ingredient_title h4 {
+    color: #fafae0;
+    text-shadow: 2px 2px 1px black;
+    font-weight: bold;
+    padding-top: 8px;
+}
+
+.menue_title h4 {
+    color: #ffdbc9;
+    text-shadow: 2px 2px 1px black;
+    font-weight: bold;
+    padding-top: 8px;
+}
+
+.search-item {
+    border-radius: 1rem;
+    background-color: #fafae0;
+    border: dotted 3px #556b2f;
+    box-shadow: 5px 5px 3px black;
+    padding: 20px 20px 0 20px;
+    margin-bottom: 0;
+}
+
+li, ul {
+    list-style-type: none;
+}
+
+#item-detail {
+    display: flex;
+    /*margin-bottom: 10px;*/
+}
+
+#item-detail p {
+    width: 100px;
+    /*padding-right: 20px;*/
+    font-weight: bold;
+}
+
+#item-detail ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+#item-detail button[type="submit"] {
+    width: 110px;
+    display: inline-flex;
+    justify-content: flex-start;
+    background-color: #fafae0;
+    border: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+#item-detail button[type="submit"]:hover {
+    color: #ffcc33;
 }

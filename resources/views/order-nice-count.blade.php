@@ -1,18 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="search">
-            <form class="search-form" method="get" action="/search">
-            @csrf
-                <input type="text" name="keyword" class="search-box" placeholder="料理名、食材名">
-                <button type="submit" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </form>
-        </div>
         
-        <div class="search-keyword">
-            @if ($keyword != null)
-                <h5>{{ $keyword }}の検索結果一覧：{{ $count }}品</h5>
-            @endif
+        <div class="search-keyword" style="color: white; font-weight: bold; font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px black;">
+                <h2>いいねの多いレシピ</h2>
         </div>
         
         
@@ -26,7 +17,7 @@
                     @endif
                     <div class="search-recipe-text">
                         <div class="recipe-title-nice">
-                            <h3 class='title'><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a></h2>  <!--レシピのタイトル表示-->
+                            <h3><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a></h3>  <!--レシピのタイトル表示-->
                             <div class="nice">
                                 @if($nice_model->nice_exist(Auth::user()->id, $recipe->id))
                                 <p class="favorite-marke">
@@ -41,6 +32,7 @@
                                 @endif​ 
                             </div>
                         </div>
+                    
                         <div class="user_name">
                             @if($recipe->user_id === $auth->id)
                                 <a href="/my_page">by {{ $recipe->user->name }}</a>  <!--自分の投稿したレシピの場合はマイページへ-->
