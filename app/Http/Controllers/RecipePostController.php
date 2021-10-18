@@ -28,13 +28,15 @@ class RecipePostController extends Controller
         if(!empty($keyword))  //検索フォームにキーワードが入力されたときの処理
         {
             //whereで検索条件の絞り込み($keywordであいまい検索)、orWhereHasでリレーション先のテーブルのレコードから検索
-            $query->where('title','like','%'.$keyword.'%')->orWhere('ingredients','like','%'.$keyword.'%')->orWhereHas('tags', function($query) use ($keyword){
+            $query->where('title','like','%'.$keyword.'%')->orWhere('ingredients','like','%'.$keyword.'%')->orWhere('explanation','like','%'.$keyword.'%')->orWhereHas('tags', function($query) use ($keyword){
                 $query->where('name','like','%'.$keyword.'%');
             });
         }
-        $recipe = $query->orderBy('created_at','desc')->paginate(10);
-        $count = count($recipe);
-        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' => $keyword, 'count' => $count, 'auth' => Auth::user()]);
+        $recipes = $query->withCount('nices')->orderBy('created_at','desc')->paginate(10);
+        $count = $query->count();
+        
+        $nice_model = new Nice;
+        return view('search-recipe')->with(['recipes' => $recipes, 'keyword' => $keyword, 'count' => $count, 'nice_model' => $nice_model, 'auth' => Auth::user()]);
     }
     
     //タグ検索機能の実行（タグが押されたときにそのタグが付いているレシピのみを表示）
@@ -45,9 +47,11 @@ class RecipePostController extends Controller
         
         $query->whereHas('tags', function($query) use ($keyword){$query->where('name','like','%'.$keyword.'%');});
         
-        $recipe =$query->orderBy('created_at','desc')->paginate(10);
-        $count = count($recipe);
-        return view('search-recipe')->with(['recipes' => $recipe, 'keyword' =>$keyword, 'count' => $count, 'auth' => Auth::user()]);
+        $recipes = $query->withCount('nices')->orderBy('created_at','desc')->paginate(10);
+        $count = $query->count();
+        
+        $nice_model = new Nice;
+        return view('search-recipe')->with(['recipes' => $recipes, 'keyword' =>$keyword, 'count' => $count, 'nice_model' => $nice_model, 'auth' => Auth::user()]);
     }
     
     //特定IDのrecipeを表示する
@@ -57,6 +61,14 @@ class RecipePostController extends Controller
         $nice_count = $recipe->loadCount('nices');
         $nice_model = new Nice;
         return view('show-recipe')->with(['recipe' => $recipe, 'nice_model' => $nice_model, 'auth' => Auth::user()]);
+    }
+    
+    public function order_nice_count(Recipe $recipe)
+    {
+        $recipes = $recipe->withCount('nices')->orderBy('nices_count', 'desc')->paginate(10);
+        $nice_count = $recipe->withCount('nices');
+        $nice_model = new Nice;
+        return view('order-nice-count')->with(['recipes' => $recipes, 'nice_model' => $nice_model, 'auth' => Auth::user()]);
     }
     
     //レシピ投稿画面を表示

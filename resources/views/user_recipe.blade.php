@@ -14,7 +14,22 @@
                         <img src="{{asset('cooking_frying_pan01_01.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
                     @endif
                     <div class="search-recipe-text">
-                        <h2 class='title'><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a></h2>  <!--レシピのタイトル表示-->
+                        <div class="recipe-title-nice">
+                            <h3 class='title'><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a></h2>  <!--レシピのタイトル表示-->
+                            <div class="nice">
+                                @if($nice_model->nice_exist(Auth::user()->id, $recipe->id))
+                                    <p class="favorite-marke">
+                                        <a class="js-nice-toggle loved" href="" data-recipeid="{{ $recipe->id }}" style="font-size: 1.3em; color: #dddddd;"><i class="fas fa-heart"></i></a>
+                                        <span class="nicesCount">{{$recipe->nices_count}}</span>
+                                    </p>
+                                @else
+                                    <p class="favorite-marke">
+                                        <a class="js-nice-toggle" href="" data-recipeid="{{ $recipe->id }}" style="color: #dddddd; font-size: 1.3em;"><i class="fas fa-heart"></i></a>
+                                        <span class="nicesCount">{{$recipe->nices_count}}</span>
+                                    </p>
+                                @endif​ 
+                            </div>
+                        </div>
                         <div class="user_name">
                             @if($recipe->user->id === $auth->id)
                                 <a href="/my_page">by {{ $recipe->user->name }}</a>  <!--自分の投稿したレシピの場合はマイページへ-->

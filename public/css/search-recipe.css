@@ -29,6 +29,7 @@
     border: dotted 3px #556b2f;
     overflow: hidden;
     box-shadow: 5px 5px 3px black;
+    border-radius: 1rem;
 }
 
 .search-recipe-text {
@@ -43,11 +44,16 @@
     color: #556b2f;
 }
 
+.recipe-title-nice {
+    display: flex;
+    justify-content: space-between;
+}
+
 .search-recipe img {
     width: 25%;
     height: 180px;
     object-fit: cover;
-    border-radius: 5%;
+    border-radius: 1rem;
     border: solid;
     border-color: #556b2f;
 }

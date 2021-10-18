@@ -32,7 +32,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="nav-item">
             <div class="container">
                 <h2 class="navbar-brand" style="font-family: 'Sawarabi Mincho', sans-serif; font-weight: bold; text-shadow: 2px 2px 1px #bbb;">
                     Muscle Kitchen
@@ -55,10 +55,23 @@
                         <li><a class="dropdown-item" href="/my_page" style="border-right: solid;">
                             マイページ
                         </a></li>
-                                       
-                        <li><a class="dropdown-item" href="/recipes/create">
+                        <li><a class="dropdown-item" href="/recipes/create" style="border-right: solid;">
                             レシピ投稿
                         </a></li>
+                        <li class="nav-item dropdown" id="navbar-recipe">
+                            <a id="navbarDropdown" class="dropdown-item dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                            レシピ
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/search">
+                                    <i class="fa fa-search" aria-hidden="true"></i> レシピ検索 
+                                </a>    
+                                
+                                <a class="dropdown-item" href="/search_by_nicecount">
+                                    いいねの多いレシピ
+                                </a>
+                            </div>
+                        </li>               
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -125,12 +138,27 @@
     <style>
         #home-user-image {
             object-fit: cover;
-                object-position: center top;
-                float: left;
-                margin: 0 5px 5px 0; 
-                border-radius: 50%; 
-                width: 30px; 
-                height: 30px;
+            object-position: center top;
+            float: left;
+            margin: 0 5px 5px 0; 
+            border-radius: 50%; 
+            width: 30px; 
+            height: 30px;
+        }
+        
+        #nav-item a:hover {
+            background-color: #ffffcc;
+            color: black;
+        }
+        
+        #nav-item a:focus {
+            background-color: white;
+            color: black;
+            text-shadow: 0 0 0;
+        }
+        
+        #navbar-recipe a:focus {
+            color: #ffcc33;
         }
     </style>
 </body>

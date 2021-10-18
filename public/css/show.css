@@ -9,6 +9,7 @@
     box-shadow: 5px 5px 3px black;
     font-family: serif;
     border: dotted 3px #556b2f;
+    border-radius: 1rem;
 }
 
 
@@ -99,7 +100,7 @@
     height: 350px;
     margin-bottom: 20px;
     object-fit: cover;
-    border-radius: 5%;
+    border-radius: 1rem;
     border: solid;
     border-color: #556b2f;
 }

@@ -38,9 +38,11 @@ class UserController extends Controller
     {
         if($user != Auth::user()){  //ユーザーが自分ではない場合
         $user = User::find($user->id);  //リクエストされたユーザーのidと一致するuserテーブルのidを取得
-        $recipes = Recipe::where('user_id', $user->id)->orderBy('created_at', 'desc')->paginate(10);  //該当idのユーザーのレシピを取得
-        $count = count($recipes);
-        return view('user_recipe')->with(['user' => $user, 'recipes' => $recipes, 'count' => $count, 'auth' => Auth::user()]);
+        $recipes = Recipe::where('user_id', $user->id)->withCount('nices')->orderBy('created_at', 'desc')->paginate(10);  //該当idのユーザーのレシピを取得
+        $count = Recipe::where('user_id', $user->id)->count();
+        
+        $nice_model = new Nice;
+        return view('user_recipe')->with(['user' => $user, 'recipes' => $recipes, 'count' => $count, 'nice_model' => $nice_model, 'auth' => Auth::user()]);
         }
     }
     
@@ -50,9 +52,11 @@ class UserController extends Controller
         //ユーザーのIDと等しいnicesテーブルのuser_idを探し、そのuser_idを持つレコードのrecipe_idのみを取得
         $nice = Nice::where('user_id', $user->id)->select('recipe_id')->get();  //$niceには複数のレコードのrecipe_idが入っているため、データは配列
         //そのnicesテーブルのrecipe_idでrecipesテーブルに検索をかける
-        $nice_recipes = Recipe::whereIn('id', $nice)->orderBy('created_at', 'desc')->paginate(10);  //$niceのデータが配列のためwhereInを使う
-        $count = count($nice_recipes);
-        return view('user_nice_recipe')->with(['user' => $user, 'nice_recipes' => $nice_recipes, 'count' => $count, 'auth' => Auth::user()]);
+        $nice_recipes = Recipe::whereIn('id', $nice)->withCount('nices')->orderBy('created_at', 'desc')->paginate(10);  //$niceのデータが配列のためwhereInを使う
+        $count = Recipe::whereIn('id', $nice)->count();
+        
+        $nice_model = new Nice;
+        return view('user_nice_recipe')->with(['user' => $user, 'nice_recipes' => $nice_recipes, 'count' => $count, 'nice_model' => $nice_model, 'auth' => Auth::user()]);
         }
     }
     
@@ -84,7 +88,7 @@ class UserController extends Controller
         //usersテーブルのidにフォロワーのIDで検索をかけてフォロワーのユーザー情報を取得
         $follower = $user->whereIn('id', $follower_id)->orderBy('created_at', 'desc')->paginate(20);
         
-        $follower_count = count($follower);
+        $follower_count = $user->whereIn('id', $follower_id)->count();
         
         return view('follower')->with(['followers' => $follower, 'follower_count' => $follower_count, 'user' => $user, 'auth' => Auth::user()->id]);
     }
@@ -94,7 +98,7 @@ class UserController extends Controller
         $follow_id = FollowUser::where('following_user_id', $user->id)->select('followed_user_id')->get();
         $follow = $user->whereIn('id', $follow_id)->orderBy('created_at', 'desc')->paginate(20);
         
-        $follow_count = count($follow);
+        $follow_count = $user->whereIn('id', $follow_id)->count();
         
         return view('follow')->with(['follows' => $follow, 'follow_count' => $follow_count, 'user' => $user, 'auth' => Auth::user()->id]);
     }

@@ -9,7 +9,7 @@
                         <div class="nice">
                             @if($nice_model->nice_exist(Auth::user()->id, $recipe->id))
                             <p class="favorite-marke">
-                                <a class="js-nice-toggle loved" href="" data-recipeid="{{ $recipe->id }}" style="font-size: 1.7em;"><i class="fas fa-heart"></i></a>
+                                <a class="js-nice-toggle loved" href="" data-recipeid="{{ $recipe->id }}" style="font-size: 1.7em; color: #dddddd;"><i class="fas fa-heart"></i></a>
                                 <span class="nicesCount" style="font-size: 1.5em;">{{$recipe->nices_count}}</span>
                             </p>
                             @else
