@@ -1,11 +1,10 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Muscle Kitchen
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+- トレーニングを行う人のためにタンパク質の豊富な料理レシピ投稿・検索できるサイトです。
+- 筋肉の付きやすい料理、脂質の少ない料理のレシピを共有したり、自らレシピを投稿して共有することもできます。
+- レシピをお気に入りに入れたり、ユーザーをフォローすることも可能となっておりますので、自分の気に入ったレシピやユーザーを保存しておくことも可能です。
+
+![スクリーンショット (90)](https://user-images.githubusercontent.com/85289554/138271513-5e97394c-d71e-4fc6-bda6-fc6897b5e478.png)
 
 ## About Laravel
 
