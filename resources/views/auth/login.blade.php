@@ -72,7 +72,7 @@
                             </div>
                         </form>
                     </div>
-                <a class="btn btn-block btn-social btn-google" href="auth/google" style="background-color: #f0f8ff;">
+                <a class="btn btn-block btn-social btn-google" href="/login/google" style="background-color: #f0f8ff;">
                     <i class="fas fa-angle-right"></i> 
                     <span style="font-weight: bold; color: #339af0;">G</span><span style="font-weight: bold; color: red;">o</span><span style="font-weight: bold; color: yellow;">o</span><span style="font-weight: bold; color: #339af0;">g</span><span style="font-weight: bold; color: green;">l</span><span style="font-weight: bold; color: red;">e</span><span style="font-family: serif;">アカウントでログイン</span>
                 </a>
