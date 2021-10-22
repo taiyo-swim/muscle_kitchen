@@ -10,17 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function()
-{
-    return redirect('/home');
-});
+// Route::get('/', function()
+// {
+//     return redirect('/home');
+// });
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 Auth::routes();
-Route::get('/home', 'RecipePostController@index');  ///homeにGETリクエストが来たらRecipePostControllerのindexメソッドを実行する。(レシピ一覧画面の表示)
+Route::get('/', 'RecipePostController@index');  ///homeにGETリクエストが来たらRecipePostControllerのindexメソッドを実行する。(レシピ一覧画面の表示)
 Route::get('/search', 'RecipePostController@search');  //レシピ検索機能の実行
 Route::get('/tag_search', 'RecipePostController@tag_search');  //タグ検索の実行
 Route::get('/search_by_nicecount', 'RecipePostController@order_nice_count');  //いいねの多い順に表示
@@ -48,7 +48,10 @@ Route::get('my_page/follower', 'My_pageController@show_my_follower');  //フォ�
 Route::get('my_page/follow', 'My_pageController@show_my_follow');  //フォロー一覧の表示
 });
 
-Route::get('/auth/google', 'OAuthLoginController@getGoogleAuth');
-Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');
+// Route::get('/auth/google', 'OAuthLoginController@getGoogleAuth');
+// Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');
+
+Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
+Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
 
 Route::get('/test', 'RecipePostController@test');
