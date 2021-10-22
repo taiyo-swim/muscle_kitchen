@@ -49,7 +49,7 @@
                 
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto" style="margin: 0 auto; font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px #bbb;">
-                        <li><a class="dropdown-item" href="/home" style="border-right: solid;">
+                        <li><a class="dropdown-item" href="/" style="border-right: solid;">
                             <i class="fa fa-home faa-tada animated-hover" aria-hidden="true"></i> ホーム
                         </a></li>
                         <li><a class="dropdown-item" href="/my_page" style="border-right: solid;">
@@ -126,7 +126,7 @@
         
         <footer id="footer">
             <ul class="footer-link">
-                <li><a href="/home">ホーム</a></li>
+                <li><a href="/">ホーム</a></li>
                 <li><a href="/my_page">マイページ</a></li>
             </ul>
             <p class="footer-text"><br>2021 Muscle Kitchen created by Taiyo.Yamamoto</p>
