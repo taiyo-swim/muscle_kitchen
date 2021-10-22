@@ -24,7 +24,7 @@
                 </div>
                 
                 <div class="form-tags">
-                    <h4>タグ</h4>
+                    <h4>タグ(半角の「#」をつけてください)</h4>
                     <input id="tags" name="tags" type="text" value="{{ $recipe->makeTag() }}"/>  <!--recipeモデルクラスのmakeTagメソッドを使用-->
                     <p class="tags__error" style="color:red">{{ $errors->first('tags') }}</p>
                 </div>
