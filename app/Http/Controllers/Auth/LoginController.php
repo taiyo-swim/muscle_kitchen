@@ -59,7 +59,7 @@ class LoginController extends Controller
             $user = $this->createUserByGoogle($gUser);
         // }
         // ログイン処理
-        Auth::login($user, true);
+        \Auth::login($user, true);
         return redirect('/');
     }
     
@@ -68,7 +68,7 @@ class LoginController extends Controller
         $user = User::create([
             'name'     => $gUser->name,
             'email'    => $gUser->email,
-            'password' => Hash::make(uniqid()),
+            'password' => \Hash::make(uniqid()),
         ]);
         return $user;
     }
