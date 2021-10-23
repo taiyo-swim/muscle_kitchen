@@ -55,7 +55,7 @@ class LoginController extends Controller
         $user = User::where('email', $gUser->email)->first();
         // 見つからなければ新しくユーザーを作成
         // if ($user == null) {
-            var_dump ($gUser, $user);
+            dd($gUser);
             $user = $this->createUserByGoogle($gUser);
         // }
         // ログイン処理
