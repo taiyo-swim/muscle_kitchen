@@ -15,7 +15,7 @@ class My_pageController extends Controller
     public function index()  //ユーザーの情報を表示
     {
         $auth = Auth::user();  //ログインユーザー情報を取得
-        $recipes = Recipe::where('user_id', $auth)->orderBy('created_at', 'desc')->get();  //該当IDのユーザー(ログインユーザー)のレシピを取得
+        $recipes = Recipe::where('user_id', $auth->id)->orderBy('created_at', 'desc')->get();  //該当IDのユーザー(ログインユーザー)のレシピを取得
         
         $follower_id = FollowUser::where('followed_user_id', Auth::id())->select('following_user_id')->get();  //フォロワー数を取得
         $follower_count = count(User::whereIn('id', $follower_id)->orderBy('created_at', 'desc')->get());
