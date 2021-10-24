@@ -314,8 +314,8 @@ input[type=radio]:checked + .recipe_item::after {
 }
 
 
-/* 480px以下に適用されるCSS（スマホ用） */
-@media screen and (max-width: 480px) {
+/* 400px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 400px) {
     #pc-size {
         display: none;
     }
@@ -337,21 +337,21 @@ input[type=radio]:checked + .recipe_item::after {
     }
     
     .search {
-    padding-left: 40px;
+    padding-left: 20px;
     margin-bottom: 100px;
     }
     
     .search-form {
-        width: 500px;
+        width: 450px;
     }
     
     .search-box {
-        width: 400px;
+        width: 350px;
     }
     
     .search-button {
         width: 40px;
-        left: 360px;
+        left: 320px;
     }
    
    .home-recipes {
@@ -383,7 +383,7 @@ input[type=radio]:checked + .recipe_item::after {
     
     /*項目検索*/
     .click-search {
-        margin: 0 50px;
+        margin: 0 20px;
     }
     
     #recipe-cateogry {
