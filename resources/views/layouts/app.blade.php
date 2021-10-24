@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -43,11 +43,88 @@
                 <!--</button>-->
                 
                 
+                <div id="mobile-size">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown" id="nav-item" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px #bbb;">
+                            <a id="navbarDropdown" class="dropdown-item dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                            メニュー
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/">
+                                    ホーム
+                                </a>    
+                                <a class="dropdown-item" href="/my_page">
+                                    マイページ
+                                </a>
+                                <a class="dropdown-item" href="/recipes/create">
+                                    レシピ投稿
+                                </a>
+                                <a id="navbarDropdown" class="dropdown-item dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                    レシピ
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/search">
+                                        <i class="fa fa-search" aria-hidden="true"></i> レシピ検索 
+                                    </a>    
+                                    
+                                    <a class="dropdown-item" href="/search_by_nicecount">
+                                        いいねの多いレシピ
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div id="mobile-size">
+                <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;"><i class="fas fa-sign-in-alt"></i> {{ __('ログイン') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;"><i class="fas fa-user-plus"></i> {{ __('ユーザー登録') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    @if (Auth::user()->image_path)
+                                        <img id="home-user-image" src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/{{ Auth::user()->image_path }}"/>
+                                    @else
+                                        <img id="home-user-image" src="{{asset('defaultuser.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
+                                    @endif
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+                                
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    <a class="dropdown-item" href="/my_page/edit_user">
+                                        {{ __('ユーザー情報編集') }}
+                                    </a>
+                                    
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('ログアウト') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                </ul>
+                </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     
                 
                     <!-- Left Side Of Navbar -->
+                <div id="pc-size"> 
                     <ul class="navbar-nav mr-auto" style="margin: 0 auto; font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px #bbb;">
                         <li><a class="dropdown-item" href="/" style="border-right: solid;">
                             <i class="fa fa-home faa-tada animated-hover" aria-hidden="true"></i> ホーム
@@ -60,7 +137,7 @@
                         </a></li>
                         <li class="nav-item dropdown" id="navbar-recipe">
                             <a id="navbarDropdown" class="dropdown-item dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                            レシピ
+                                レシピ
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/search">
@@ -73,21 +150,25 @@
                             </div>
                         </li>               
                     </ul>
+                </div>
+                
+                                
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;">{{ __('ログイン') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('ユーザー登録') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;">{{ __('ユーザー登録') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px #bbb;">
+                            <li class="nav-item dropdown" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if (Auth::user()->image_path)
                                         <img id="home-user-image" src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/{{ Auth::user()->image_path }}"/>
@@ -159,6 +240,20 @@
         
         #navbar-recipe a:focus {
             color: #ffcc33;
+        }
+        
+        #mobile-size {
+            display: none;
+        }
+        
+        @media screen and (max-width: 480px) {
+            #pc-size {
+                display: none;
+            }
+            
+            #mobile-size {
+                display: inline;
+            }
         }
     </style>
 </body>

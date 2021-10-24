@@ -48,9 +48,6 @@ Route::get('my_page/follower', 'My_pageController@show_my_follower');  //フォ�
 Route::get('my_page/follow', 'My_pageController@show_my_follow');  //フォロー一覧の表示
 });
 
-// Route::get('/auth/google', 'OAuthLoginController@getGoogleAuth');
-// Route::get('/auth/callback/google', 'OAuthLoginController@authGoogleCallback');
-
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
 
