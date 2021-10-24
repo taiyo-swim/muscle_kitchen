@@ -246,7 +246,7 @@
             display: none;
         }
         
-        @media screen and (max-width: 400px) {
+        @media screen and (max-width: 480px) {
             #pc-size {
                 display: none;
             }
