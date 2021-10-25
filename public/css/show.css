@@ -146,10 +146,91 @@
     color: #aa0000;
 }
 
-.ingredients-detail h5 {
-    
-}
 
 .how_to_cook {
     margin-left: 100px;
+}
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+
+    .show-recipe {
+        margin: 20px 20px;
+        padding: 10px;
+    }
+    
+    .recipe-information {
+        float: none;
+        width: auto;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    
+    .show-title {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 0;
+        height: 30px;
+        margin-bottom: 10px;
+    }
+    
+    .show-title h3 {
+        font-size: 1.2rem;
+    }
+    
+    .nice p {
+        padding-right: 0;
+    }
+    
+    .show-user_name {
+        margin-bottom: 10px;
+    }
+    
+    .show-user_name h5 {
+        font-size: 1rem;
+    }
+        
+    .show-explanation {
+        margin-top: 0;
+    }
+    
+    .recipe-button {
+        display: flex;
+        justify-content: space-around;
+        margin: 15px 25px;
+    }
+    
+    .recipe-button h5 {
+        font-size: 0.8rem;
+    }
+    
+    .tags button {
+        font-size: 0.6rem;
+    }
+    
+    .show-recipe img {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .cook-recipe {
+        display: block;
+    }
+    
+    .ingredients h4, .how_to_cook h4, .point h4 {
+        font-size: 1rem;
+    }
+    
+     .ingredients p, .how_to_cook p, .point p {
+        font-size: 0.8rem;
+    }
+    
+    .ingredients-detail {
+        margin: 5px 20px;
+        width: 200px;
+    }
+    
+    .how_to_cook {
+        margin-left: 0;
+    }
 }

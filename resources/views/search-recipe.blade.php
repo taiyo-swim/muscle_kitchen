@@ -26,8 +26,8 @@
                     @endif
                     <div class="search-recipe-text">
                         <div class="recipe-title-nice">
-                            <h3 class='title'><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a></h2>  <!--レシピのタイトル表示-->
-                            <div class="nice">
+                            <h3 class='title'><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a></h3>  <!--レシピのタイトル表示-->
+                            <div class="search-nice">
                                 @if($nice_model->nice_exist(Auth::user()->id, $recipe->id))
                                 <p class="favorite-marke">
                                     <a class="js-nice-toggle loved" href="" data-recipeid="{{ $recipe->id }}" style="font-size: 1.3em; color: #dddddd;"><i class="fas fa-heart"></i></a>

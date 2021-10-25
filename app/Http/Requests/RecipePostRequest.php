@@ -24,7 +24,7 @@ class RecipePostRequest extends FormRequest
     public function rules()  //レシピ投稿のバリデーションルールを記述
     {
         return [
-            'recipe_post.title' => 'required|string|max:20',
+            'recipe_post.title' => 'required|string|max:14',
             'recipe_post.explanation' => 'required|string|max:100',
             'tags.*' => 'required|regex:/#([a-zA-z0-9０-９ぁ-んーァ-ンヴー一-龠]+)/u|max:100',
             'image_path' => 'nullable',

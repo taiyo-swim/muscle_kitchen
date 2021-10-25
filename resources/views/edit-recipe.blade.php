@@ -10,7 +10,7 @@
                 @csrf
                 @method('PUT')
                 <div class="form-recipe-title">
-                    <h4>レシピ名(20文字以内)</h4>
+                    <h4>レシピ名(14文字以内)</h4>
                     <label>
                         <input type="text" name="recipe_post[title]"  value="{{ $recipe->title }}"/>
                     </label>

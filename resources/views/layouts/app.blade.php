@@ -125,7 +125,7 @@
                 
                     <!-- Left Side Of Navbar -->
                 <div id="pc-size"> 
-                    <ul class="navbar-nav mr-auto" style="margin: 0 auto; font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px #bbb;">
+                    <ul class="navbar-nav mr-auto" style="margin: 0 150px; font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 2px 2px 1px #bbb;">
                         <li><a class="dropdown-item" href="/" style="border-right: solid;">
                             <i class="fa fa-home faa-tada animated-hover" aria-hidden="true"></i> ホーム
                         </a></li>
@@ -150,8 +150,8 @@
                             </div>
                         </li>               
                     </ul>
-                </div>
                 
+                </div>
                                 
                     
 
