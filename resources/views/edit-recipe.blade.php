@@ -41,7 +41,7 @@
                 
                 <div class="form-ingredients">
                     <h4>食材</h4>
-                    <input id="serving" name="recipe_post[serving]" value="{{ $recipe->serving}}">人前
+                    <input id="serving" name="recipe_post[serving]" value="{{ $recipe->serving}}"><span>人前</span>
                     <p class="serving__error" style="color:red">{{ $errors->first('recipe_post.serving') }}</p>
                     <ol id="ingredients_order_list" style="list-style-type:none;">
                         @if ($amount_of_ingredients_count > 1)

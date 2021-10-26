@@ -360,8 +360,27 @@ input[type=radio]:checked + .recipe_item::after {
     }
     
     .home-recipe {
-        width: 80%;
-        height: 350px;
+        width: 45%;
+        height: 200px;
+         margin: 2px;
+        padding: 2px;
+    }
+    
+    .home-recipe img {
+        height: 120px;
+        margin-bottom: 5px;
+    }
+    
+    .home-recipe-text {
+        padding: 5px;
+    }
+    
+    .home-recipe-text h5 {
+        font-size: 0.7rem;
+    }
+    
+    .home-recipe-text p {
+        font-size: 0.5rem;
     }
     
     footer {
