@@ -60,9 +60,10 @@
                         
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary" style="margin-left: 60px; background-color: #808000; border: none;" onMouseOut="this.style.background='#808000'" onMouseOver="this.style.background='#556b2f'">
+                                <button type="submit" class="btn btn-primary" style="background-color: #808000; border: none;" onMouseOut="this.style.background='#808000'" onMouseOver="this.style.background='#556b2f'">
                                     {{ __('変更する') }}
                                 </button>
+                                <span style="margin-left: 10px; color: #808000;">変更情報を確認してください。</span>
                             </div>
                         </div>
                     </form>

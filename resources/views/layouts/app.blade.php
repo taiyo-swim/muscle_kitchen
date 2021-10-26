@@ -160,11 +160,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;">{{ __('ログイン') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;"><i class="fas fa-sign-in-alt"></i> {{ __('ログイン') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;">{{ __('ユーザー登録') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}" style="font-family: 'Sawarabi Mincho', sans-serif; text-shadow: 1px 1px 1px #bbb;"><i class="fas fa-user-plus"></i> {{ __('ユーザー登録') }}</a>
                                 </li>
                             @endif
                         @else

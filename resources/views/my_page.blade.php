@@ -43,17 +43,4 @@
             </div>
         </div>
         
-        <style>
-            .user-image img {
-                object-fit: cover;
-                object-position: center top;
-                float: left;
-                margin: 15px 30px 0 0; 
-                border-radius: 50%; 
-                width: 100px; 
-                height: 100px;
-                border: solid;
-                border-color: black;
-            }
-        </style>
 @endsection

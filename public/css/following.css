@@ -36,3 +36,15 @@
     font-family: serif;
     color: #000080;
 }
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+
+    #following-users {
+        padding: 20px;
+    }
+    
+    #following-users h4 {
+        font-size: 1.2rem;
+    }
+}

@@ -99,6 +99,7 @@
 
 .form-image span {
     margin-top: 10px;
+    margin-left: 5px;
 }
 
 #serving {
@@ -203,7 +204,7 @@
 }
 
 .form-submit input {
-    width: 10%;
+    width: 8rem;
     color: #fff;
     border-top: 4px solid #48ecc4;
     border-right: 4px solid #0a5f4a;
@@ -219,4 +220,55 @@
     border-right: 4px solid #8cf9de;
     border-bottom: 4px solid #48ecc4;
     border-left: 4px solid #0a5f4a;
+}
+
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+    
+    .recipe-form input, .recipe-form textarea {
+        font-size: 0.5rem;
+    }
+    
+    .recipe-form form {
+        margin: 50px 20px;
+        padding: 20px;
+        background-color: #ffdbc9;
+        box-shadow: 5px 5px 3px black;
+        font-family: serif;
+        border: dotted 3px #556b2f;
+        border-radius: 1rem;
+    }
+    
+    .recipe-form h4 {
+        font-size: 1rem;
+    }
+    
+    .form-image label {
+        font-size: 0.5rem;
+    }
+    
+    .form-image span {
+        font-size: 0.7rem;
+    }
+    
+    #ingredients_order_list {
+        margin-left: 0;
+    }
+    
+    #ingredients {
+        margin-left: 0;
+    }
+    
+    #amount_of_ingredients {
+        margin-left: 20px;
+    }
+    
+    .form-add-button input {
+        width: 30px;
+    }
+    
+    .form-submit input {
+        width: 5rem;
+    }
 }

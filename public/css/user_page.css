@@ -25,6 +25,18 @@
     border-radius: 1rem;
 }
 
+.user-image img {
+    object-fit: cover;
+    object-position: center top;
+    float: left;
+    margin: 5px 30px 0 0; 
+    border-radius: 50%; 
+    width: 110px; 
+    height: 110px;
+    border: solid;
+    border-color: black;
+}            
+
 .following {
     display: flex;
     padding-top: 20px;
@@ -106,4 +118,54 @@
 .image-link img:hover {
     filter: grayscale(100%);
     box-shadow: 0 0 0;
+}
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+    
+    .user-information {
+        padding: 10px;
+        margin: 0 20px;
+    }
+    
+    .user-image img {
+        margin: 0 10px 0 0; 
+        width: 70px; 
+        height: 70px;
+    }
+    
+    .user-information h4 {
+        font-size: 1rem;
+    }
+    
+    .user-information h5 {
+        font-size: 0.8rem;
+    }
+    
+    .following {
+        padding-top: 10px;
+    }
+    
+    .user-recipe {
+        margin: 50px 50px;
+        flex-direction: column;
+    }
+    
+    .user-recipe h4 {
+        font-size: 1.2rem;
+        padding-bottom: 10px;
+    }
+    
+    .recipe_images {
+        margin: 0 20px;
+    }
+    
+    .image-link img {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .recipe_images h3 {
+        font-size: 1.3rem;
+    }
 }

@@ -2,6 +2,7 @@
   <!--<button type="button" @click="click"></button>-->
     <div class="float-right">
       <h5><a :href="'/users/'+userId+'/follower'" style="margin-right: 20px;
+        margin-bottom: 10px;
         position: relative;
         display: inline-block;
         font-weight: bold;
@@ -18,6 +19,7 @@
         <i class="mr-1 fas fa-user-check"></i>フォロー中</button>
     </div>
 </template>
+    
 
 <script>
 //const axios = require('axios');
