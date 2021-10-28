@@ -10,7 +10,7 @@
 
 ## :globe_with_meridians: URL
 
-### **https://git.heroku.com/muscle-kitchen.git**
+### **https://muscle-kitchen.herokuapp.com/**
 
 
 
