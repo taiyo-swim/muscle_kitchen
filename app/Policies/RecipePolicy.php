@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Recipe;
 use App\User;
+use App\RecipeReview;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class RecipePolicy
@@ -90,5 +91,10 @@ class RecipePolicy
     public function forceDelete(User $user, Recipe $recipe)
     {
         //
+    }
+    
+    public function delete_review(User $user, RecipeReview $recipeReview)
+    {
+        return $user->id === $recipeReview->user_id;
     }
 }

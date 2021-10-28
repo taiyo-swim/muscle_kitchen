@@ -90,6 +90,10 @@
                 <p>{{ $recipe->point }}</p>
             </div>
         </div>
+        
+        <a href="/recipes/{{ $recipe->id }}/review">
+            レビューを投稿
+        </a>
     
     <script>
         function deletePost(){

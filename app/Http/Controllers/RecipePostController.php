@@ -4,10 +4,12 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;  //Recipeモデルクラスをuse宣言
+use App\User;
 use App\Tag;  //Tagモデルクラスをuse宣言
 use App\Http\Requests\RecipePostRequest;
 use Illuminate\Http\Request;
 use App\Nice;
+use App\RecipeReview;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -190,7 +192,55 @@ class RecipePostController extends Controller
         $this->authorize('delete', $recipe);  //ポリシーを元に投稿したユーザー以外は削除できないようにアクションを認可
         $s3_delete = Storage::disk('s3')->delete($recipe->image_path);  //s3の画像を削除
         $recipe->delete();
-        return redirect('/home');
+        return redirect('/');
+    }
+  
+    //レビューの投稿画面表示
+    public function review(RecipeReview $recipeReview, $recipe) 
+    {
+        $recipeReviews = $recipeReview->where('recipe_id', $recipe)->get();
+        $recipes = Recipe::where('id', $recipe)->first();
+        
+        
+        return view('recipe_review')->with(['recipeReviews' => $recipeReviews, 'recipe' => $recipes]);
+    }
+    
+    
+    public function create_review(Request $request, RecipeReview $recipeReview, Recipe $recipe) 
+    {
+        // $this->validate($request, [
+        //     'stars' => 'required|integer|min:1|max:5',
+        //     'comment' => 'required'
+        // ]);
+        
+        $exists = RecipeReview::where('user_id', $request->user()->id)->where('recipe_id', $recipe->id)->exists();
+
+        if($exists) {
+            echo('すでにレビューは投稿済みです。');
+            return;
+        } else {
+            $input_review = $request['review'];
+            $recipeReview->stars = $input_review['stars'];
+            $recipeReview->comment = $input_review['comment'];
+            $recipeReview->user_id = $request->user()->id;
+            $recipeReview->recipe_id = $recipe->id;
+            
+            $recipeReview->save();
+            return redirect('/recipes/' . $recipeReview->recipe_id . '/review');
+        }  
+    }
+    
+    
+    public function delete_review($recipeReview) 
+    {
+        // $this->authorize('delete_review', $recipeReview);
+        $recipeReviews = RecipeReview::where('id', $recipeReview)->first();
+        
+        $recipe_id = $recipeReviews->recipe->id;
+        
+        $recipeReviews->delete();
+        
+        return redirect('/recipes/' . $recipe_id . '/review');
     }
 }
 

@@ -29,6 +29,7 @@
     <link href="{{ asset('css/show.css') }}" rel="stylesheet">
     <link href="{{ asset('css/form.css') }}" rel="stylesheet">
     <link href="{{ asset('css/following.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/recipe-review.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">

@@ -362,8 +362,8 @@ input[type=radio]:checked + .recipe_item::after {
     .home-recipe {
         width: 45%;
         height: 200px;
-         margin: 2px;
-        padding: 2px;
+        margin: 2px;
+        padding: 5px;
     }
     
     .home-recipe img {

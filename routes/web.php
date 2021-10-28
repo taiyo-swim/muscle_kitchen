@@ -31,6 +31,9 @@ Route::get('/recipes/{recipe}', 'RecipePostController@show');  ///recipes/{recip
 Route::get('/recipes/{recipe}/edit', 'RecipePostController@edit');  //レシピ編集画面の表示
 Route::put('/recipes/{recipe}', 'RecipePostController@update');  //レシピ投稿編集の実行
 Route::delete('/recipes/{recipe}', 'RecipePostController@delete');  //レシピ投稿削除の実行
+Route::get('recipes/{recipe}/review', 'RecipePostController@review'); //レビュー画面の表示
+Route::post('recipes/{recipe}/create_review', 'RecipePostController@create_review');  //レビューの送信
+Route::delete('recipes/{recipeReview}/review', 'RecipePostController@delete_review');  //レビューの削除
 Route::post('recipes/{recipe}/nice', 'NiceController@ajaxnice');
 Route::get('/users/{user}', 'UserController@index');  //ユーザーページの表示
 Route::get('/users/{user}/recipes', 'UserController@show_user_recipe');  //ユーザーのレシピの表示

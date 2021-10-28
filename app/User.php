@@ -42,6 +42,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Recipe');
     }
     
+    public function recipeReviews() {
+        return $this->hasMany('App\RecipeReview');
+    }
+    
     public function nices() {
         return $this->hasMany('App\Nice');
     }
