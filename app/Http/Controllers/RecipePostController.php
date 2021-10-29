@@ -196,16 +196,16 @@ class RecipePostController extends Controller
     }
   
     //レビューの投稿画面表示
-    public function review(RecipeReview $recipeReview, $recipe) 
+    public function review(RecipeReview $recipeReview, $recipe)  //$recipeはルーティングから取ってきたレシピのid
     {
-        $recipeReviews = $recipeReview->where('recipe_id', $recipe)->get();
-        $recipes = Recipe::where('id', $recipe)->first();
+        $recipeReviews = $recipeReview->where('recipe_id', $recipe)->get();  //該当レシピのレビューだけをrecipe_idで絞り込んで取得
+        $review_recipe = Recipe::where('id', $recipe)->first();  //Recipeからidで絞り込んで該当レシピを取得
         
         
-        return view('recipe_review')->with(['recipeReviews' => $recipeReviews, 'recipe' => $recipes]);
+        return view('recipe_review')->with(['recipeReviews' => $recipeReviews, 'recipe' => $review_recipe, 'auth_id' => Auth::user()->id]);
     }
     
-    
+    //レビューの投稿
     public function create_review(Request $request, RecipeReview $recipeReview, Recipe $recipe) 
     {
         // $this->validate($request, [
@@ -230,15 +230,14 @@ class RecipePostController extends Controller
         }  
     }
     
-    
-    public function delete_review($recipeReview) 
+    //レビューの削除
+    public function delete_review($recipeReview)  //$recipeReviewはルーティングから取ってきたレビューのid
     {
-        // $this->authorize('delete_review', $recipeReview);
-        $recipeReviews = RecipeReview::where('id', $recipeReview)->first();
+        $delete_recipeReview = RecipeReview::where('id', $recipeReview)->first();  //削除するレビューをidで検索して取得
+        // $this->authorize('delete_review', $delete_recipeReview);
         
-        $recipe_id = $recipeReviews->recipe->id;
-        
-        $recipeReviews->delete();
+        $recipe_id = $delete_recipeReview->recipe->id;  //リレーションでレシピのidを取得
+        $delete_recipeReview->delete();  //レビューを削除
         
         return redirect('/recipes/' . $recipe_id . '/review');
     }

@@ -18,6 +18,12 @@
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/*
+{recipe} = レシピのid
+{user} = ユーザーのid
+{recipeReview} = レビューのid
+*/
+
 
 Auth::routes();
 Route::get('/', 'RecipePostController@index');  ///homeにGETリクエストが来たらRecipePostControllerのindexメソッドを実行する。(レシピ一覧画面の表示)
@@ -33,7 +39,7 @@ Route::put('/recipes/{recipe}', 'RecipePostController@update');  //レシピ投�
 Route::delete('/recipes/{recipe}', 'RecipePostController@delete');  //レシピ投稿削除の実行
 Route::get('recipes/{recipe}/review', 'RecipePostController@review'); //レビュー画面の表示
 Route::post('recipes/{recipe}/create_review', 'RecipePostController@create_review');  //レビューの送信
-Route::delete('recipes/{recipeReview}/review', 'RecipePostController@delete_review');  //レビューの削除
+Route::delete('recipes/{recipe}/review', 'RecipePostController@delete_review');  //レビューの削除
 Route::post('recipes/{recipe}/nice', 'NiceController@ajaxnice');
 Route::get('/users/{user}', 'UserController@index');  //ユーザーページの表示
 Route::get('/users/{user}/recipes', 'UserController@show_user_recipe');  //ユーザーのレシピの表示

@@ -2,15 +2,49 @@
 
 @import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
 
-.recipe_review h3 {
-    color: white;
-    text-shadow: 2px 2px 1px black;
-    font-family: 'Sawarabi Mincho', sans-serif;
-    font-weight: bold;
+.recipe_review {
+  margin: 50px 200px;
+  background-color: #fafae0;
+  border-radius: 1rem;
+  border: dotted 3px #556b2f;
+  box-shadow: 5px 5px 3px black;
+  font-family: 'Sawarabi Mincho', sans-serif;
 }
 
+.review-title {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+ 
+}
+
+.review-title img {
+  width: 150px;
+  height: 120px;
+  object-fit: cover;
+  border: solid;
+  border-radius: 1rem;
+}
+
+.review-title h2 {
+  color: white;
+  text-shadow: 2px 2px 1px black;
+  font-weight: bold;
+  padding-left: 50px;
+}
+
+
 .review-form {
-    margin: 50px 100px;
+  padding: 20px 80px;
+}
+
+.review-board {
+  background-color: #d9e5ff;
+  padding: 20px;
+  border-radius: 1rem;
+  border: dotted 3px #556b2f;
+  box-shadow: 5px 5px 3px black;
+  
 }
 
 .evaluation{
@@ -26,19 +60,159 @@
   padding: 10px 10px 0;
   color: gray;
   cursor: pointer;
-  font-size: 40px;
+  font-size: 30px;
 }
-.evaluation label .text{
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  text-align: center;
-  font-size: 12px;
-  color: gray;
-}
+
 .evaluation label:hover,
 .evaluation label:hover ~ label,
 .evaluation input[type='radio']:checked ~ label{
   color: #ffcc00;
+}
+
+.review-comment {
+  margin-top: 30px;
+}
+
+.review-comment textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.3em;
+  transition: 0.3s;
+  letter-spacing: 1px;
+  color: #aaaaaa;
+  border: 1px solid #d9e5ff;
+  box-shadow: 2px 2px 2px 0 #707070 inset;
+  border-radius: 4px;
+}
+
+.review-comment textarea:focus {
+  outline: none;
+  box-shadow: inset 2px 2px 2px 0 #c9c9c9;
+  background-color: #fafae0;
+}
+
+.review-button {
+  text-align: right;
+}
+
+.review-button button {
+  display: inline-block;
+  padding: 2px 10px;
+  text-decoration: nane;
+  background-color: yellow;
+  border: solid;
+  border-radius: 3px;
+  transition: .4s;
+  text-decoration: none;
+  box-shadow: 3px 3px 5px black;
+}
+
+.review-button button:hover {
+  box-shadow: 0 0 0;
+  background-color: #f0e68c;
+}
+
+.show_reviews {
+  padding: 30px 30px 30px 0;
+}
+
+.show_review {
+  border-top: dotted 2px #556b2f;
+  padding-top: 10px;
+}
+
+.review_user_name p {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.show-review-day {
+  text-align: right;
+}
+
+.show-review-day p {
+  font-size: 0.7rem;
+}
+
+.delete-review-button span {
+  font-size: 0.5rem;
+  padding: 2px 10px;
+}
+
+.review-add {
+  text-align: center;
+}
+
+.review-add a {
+  padding: 5px 20px;
+  color: #fff;
+  background: #03A9F4;
+  width:200px;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+.review-add a:hover {
+  background-color: #bbbbbb;
+}
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+  .recipe_review {
+    margin: 50px 20px;
+  }
+  
+  .review-title {
+    padding: 10px;
+  }
+  
+  .review-title img {
+    width: 100px;
+    height: 80px;
+  }
+  
+  .review-title h2 {
+    padding-left: 20px;
+    font-size: 1.4rem;
+  }
+
+  .review-form {
+    padding: 20px 20px;
+  }
+  
+  .review-form h5 {
+    font-size: 1rem;
+  }
+  
+  .review-board {
+    padding: 10px;
+  }
+  
+  .evaluation label{
+    padding: 5px 5px 0;
+    font-size: 20px;
+  }
+  
+  .review-comment textarea {
+    font-size: 0.7rem;
+  }
+  
+  .show_review p {
+    font-size: 0.7rem;
+  }
+  
+  .show-review-day p {
+    font-size: 0.5rem;
+  }
+  
+  .delete-review-button span {
+    font-size: 0.3rem;
+    padding: 1px 7px;
+  }
+  
+  .review-add a {
+    padding: 5px 20px;
+    font-size: 0.5rem;
+    margin-left: 20px;
+  }
 }

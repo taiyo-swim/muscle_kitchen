@@ -93,8 +93,8 @@ class RecipePolicy
         //
     }
     
-    public function delete_review(User $user, RecipeReview $recipeReview)
-    {
-        return $user->id === $recipeReview->user_id;
-    }
+    // public function delete_review(User $user, RecipeReview $recipeReview)
+    // {
+    //     return $user->id === $recipeReview->user_id;
+    // }
 }
