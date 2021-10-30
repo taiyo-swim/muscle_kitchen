@@ -9,7 +9,7 @@
             @else
                 <img src="{{asset('cooking_frying_pan01_01.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
             @endif
-            <h2>{{ $recipe->title }}のレビュー</h2>
+            <h2><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a>のレビュー（{{ $review_count }}件）</h2>
         </div>
         
             <form action="/recipes/{{ $recipe->id }}/create_review" method="POST" enctype="multipart/form-data">
@@ -38,7 +38,15 @@
                                 <p class="comment__error" style="color:red">{{ $errors->first('comment') }}</p>
                             </div>
                             <div class="review-button">
-                                <button type="submit">投稿</button>
+                                @if($exist_review === null)
+                                    <button type="submit">投稿</button>
+                                @else
+                                    @if($exist_review->user_id == $auth_id)  <!--ユーザーがすでにレビューを投稿している場合はボタンを押せないように-->
+                                        <button disabled>既に投稿済みです</button>
+                                    @else
+                                        <button type="submit">投稿</button>
+                                    @endif
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -111,7 +119,7 @@
             }
             return false;
           });
-          var num = $('.review-list').children('li').length;  //リスト1つしかなければ表示しない
+          var num = $('.review-list').children('li').length;  //リストが1つしかなければ表示しない
           if (num < 2) {
             $('.open-btn').hide();
           };

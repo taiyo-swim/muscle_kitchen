@@ -45,6 +45,11 @@
 
 .show-user_name a {
     color: #556b2f;
+    text-decoration: none;
+}
+
+.show-user_name a:hover {
+    color: #aaaaaa;
 }
 
 .show-explanation {
@@ -151,6 +156,25 @@
     margin-left: 100px;
 }
 
+.meneu-review {
+    margin-top: 100px;
+}
+
+.review-link {
+    text-align: right;
+}
+
+.review-link a {
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: #999999;
+}
+
+.review-link a:hover {
+    color: black;
+}
+
 /* 480px以下に適用されるCSS（スマホ用） */
 @media screen and (max-width: 480px) {
 
@@ -232,5 +256,13 @@
     
     .how_to_cook {
         margin-left: 0;
+    }
+    
+    .meneu-review h4 {
+        font-size: 1rem;
+    }
+    
+    .review-link a {
+        font-size: 0.7rem;
     }
 }

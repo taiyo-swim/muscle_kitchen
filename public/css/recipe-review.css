@@ -27,12 +27,15 @@
 }
 
 .review-title h2 {
-  color: white;
-  text-shadow: 2px 2px 1px black;
+  text-shadow: 2px 2px 1px #cccccc;
   font-weight: bold;
   padding-left: 50px;
 }
 
+.review-title a {
+  text-decoration: none;
+  color: #556b2f;
+}
 
 .review-form {
   padding: 20px 80px;
@@ -173,7 +176,7 @@
   
   .review-title h2 {
     padding-left: 20px;
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 
   .review-form {
@@ -195,6 +198,10 @@
   
   .review-comment textarea {
     font-size: 0.7rem;
+  }
+  
+  .review-button button {
+    font-size: 0.5rem;
   }
   
   .show_review p {

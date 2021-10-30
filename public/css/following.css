@@ -35,6 +35,11 @@
 #following-user a {
     font-family: serif;
     color: #000080;
+    text-decoration: none;
+}
+
+#following-user a:hover {
+    color: #aaaaaa;
 }
 
 /* 480px以下に適用されるCSS（スマホ用） */

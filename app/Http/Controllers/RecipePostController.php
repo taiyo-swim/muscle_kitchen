@@ -62,7 +62,12 @@ class RecipePostController extends Controller
         // $nice=Nice::where('recipe_id', $recipe->id)->where('user_id', auth()->user()->id)->first();  //いいね表示用のコードを追加
         $nice_count = $recipe->loadCount('nices');
         $nice_model = new Nice;
-        return view('show-recipe')->with(['recipe' => $recipe, 'nice_model' => $nice_model, 'auth' => Auth::user()]);
+        
+        $recipeReviews = RecipeReview::where('recipe_id', $recipe->id)->get(); 
+        $review_count = count($recipeReviews); 
+        $recipeReview = $recipeReviews->first();
+        
+        return view('show-recipe')->with(['recipe' => $recipe, 'nice_model' => $nice_model, 'recipeReview' => $recipeReview, 'review_count' => $review_count,'auth' => Auth::user()]);
     }
     
     public function order_nice_count(Recipe $recipe)
@@ -200,9 +205,10 @@ class RecipePostController extends Controller
     {
         $recipeReviews = $recipeReview->where('recipe_id', $recipe)->get();  //該当レシピのレビューだけをrecipe_idで絞り込んで取得
         $review_recipe = Recipe::where('id', $recipe)->first();  //Recipeからidで絞り込んで該当レシピを取得
+        $review_count = count($recipeReviews);  //レビュー数を取得
+        $exist_review = $recipeReviews->where('user_id', Auth::user()->id)->first();  //ログインユーザーのレビューを取得
         
-        
-        return view('recipe_review')->with(['recipeReviews' => $recipeReviews, 'recipe' => $review_recipe, 'auth_id' => Auth::user()->id]);
+        return view('recipe_review')->with(['recipeReviews' => $recipeReviews, 'recipe' => $review_recipe, 'review_count' => $review_count, 'exist_review' => $exist_review, 'auth_id' => Auth::user()->id]);
     }
     
     //レビューの投稿
@@ -213,21 +219,14 @@ class RecipePostController extends Controller
         //     'comment' => 'required'
         // ]);
         
-        $exists = RecipeReview::where('user_id', $request->user()->id)->where('recipe_id', $recipe->id)->exists();
-
-        if($exists) {
-            echo('すでにレビューは投稿済みです。');
-            return;
-        } else {
-            $input_review = $request['review'];
-            $recipeReview->stars = $input_review['stars'];
-            $recipeReview->comment = $input_review['comment'];
-            $recipeReview->user_id = $request->user()->id;
-            $recipeReview->recipe_id = $recipe->id;
-            
-            $recipeReview->save();
-            return redirect('/recipes/' . $recipeReview->recipe_id . '/review');
-        }  
+        $input_review = $request['review'];
+        $recipeReview->stars = $input_review['stars'];
+        $recipeReview->comment = $input_review['comment'];
+        $recipeReview->user_id = $request->user()->id;
+        $recipeReview->recipe_id = $recipe->id;
+        
+        $recipeReview->save();
+        return redirect('/recipes/' . $recipeReview->recipe_id . '/review');
     }
     
     //レビューの削除
