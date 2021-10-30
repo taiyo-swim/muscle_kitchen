@@ -37,6 +37,13 @@ class Recipe extends Model
          return $this->hasMany('App\Nice');
     }
     
+     public function recipeReviews()  //Reviewモデルとのリレーションを設定
+    { 
+
+        return $this->hasMany('App\RecipeReview');
+
+    }
+    
     public function getPaginateByLimit(int $limit_count = 12)  //データの取得制限
     {
         //created_atで降順に並べたあと、limitで件数制限をかける

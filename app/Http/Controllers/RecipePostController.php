@@ -4,10 +4,12 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;  //Recipeモデルクラスをuse宣言
+use App\User;
 use App\Tag;  //Tagモデルクラスをuse宣言
 use App\Http\Requests\RecipePostRequest;
 use Illuminate\Http\Request;
 use App\Nice;
+use App\RecipeReview;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,7 +62,12 @@ class RecipePostController extends Controller
         // $nice=Nice::where('recipe_id', $recipe->id)->where('user_id', auth()->user()->id)->first();  //いいね表示用のコードを追加
         $nice_count = $recipe->loadCount('nices');
         $nice_model = new Nice;
-        return view('show-recipe')->with(['recipe' => $recipe, 'nice_model' => $nice_model, 'auth' => Auth::user()]);
+        
+        $recipeReviews = RecipeReview::where('recipe_id', $recipe->id)->get(); 
+        $review_count = count($recipeReviews); 
+        $recipeReview = $recipeReviews->first();
+        
+        return view('show-recipe')->with(['recipe' => $recipe, 'nice_model' => $nice_model, 'recipeReview' => $recipeReview, 'review_count' => $review_count,'auth' => Auth::user()]);
     }
     
     public function order_nice_count(Recipe $recipe)
@@ -190,7 +197,48 @@ class RecipePostController extends Controller
         $this->authorize('delete', $recipe);  //ポリシーを元に投稿したユーザー以外は削除できないようにアクションを認可
         $s3_delete = Storage::disk('s3')->delete($recipe->image_path);  //s3の画像を削除
         $recipe->delete();
-        return redirect('/home');
+        return redirect('/');
+    }
+  
+    //レビューの投稿画面表示
+    public function review(RecipeReview $recipeReview, $recipe)  //$recipeはルーティングから取ってきたレシピのid
+    {
+        $recipeReviews = $recipeReview->where('recipe_id', $recipe)->get();  //該当レシピのレビューだけをrecipe_idで絞り込んで取得
+        $review_recipe = Recipe::where('id', $recipe)->first();  //Recipeからidで絞り込んで該当レシピを取得
+        $review_count = count($recipeReviews);  //レビュー数を取得
+        $exist_review = $recipeReviews->where('user_id', Auth::user()->id)->first();  //ログインユーザーのレビューを取得
+        
+        return view('recipe_review')->with(['recipeReviews' => $recipeReviews, 'recipe' => $review_recipe, 'review_count' => $review_count, 'exist_review' => $exist_review, 'auth_id' => Auth::user()->id]);
+    }
+    
+    //レビューの投稿
+    public function create_review(Request $request, RecipeReview $recipeReview, Recipe $recipe) 
+    {
+        // $this->validate($request, [
+        //     'stars' => 'required|integer|min:1|max:5',
+        //     'comment' => 'required'
+        // ]);
+        
+        $input_review = $request['review'];
+        $recipeReview->stars = $input_review['stars'];
+        $recipeReview->comment = $input_review['comment'];
+        $recipeReview->user_id = $request->user()->id;
+        $recipeReview->recipe_id = $recipe->id;
+        
+        $recipeReview->save();
+        return redirect('/recipes/' . $recipeReview->recipe_id . '/review');
+    }
+    
+    //レビューの削除
+    public function delete_review($recipeReview)  //$recipeReviewはルーティングから取ってきたレビューのid
+    {
+        $delete_recipeReview = RecipeReview::where('id', $recipeReview)->first();  //削除するレビューをidで検索して取得
+        // $this->authorize('delete_review', $delete_recipeReview);
+        
+        $recipe_id = $delete_recipeReview->recipe->id;  //リレーションでレシピのidを取得
+        $delete_recipeReview->delete();  //レビューを削除
+        
+        return redirect('/recipes/' . $recipe_id . '/review');
     }
 }
 

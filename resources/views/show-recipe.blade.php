@@ -89,7 +89,40 @@
                 <h4><i class="fa fa-arrow-circle-right"></i> ポイント</h4>
                 <p>{{ $recipe->point }}</p>
             </div>
+            
+            <div class="show-reviews meneu-review">
+                <h4><i class="fa fa-arrow-circle-right"></i> レビュー（{{ $review_count }}件）</h4>
+                <div class="show_review">
+                    <div class="review_user_name">
+                        <p>{{ $recipeReview->user->name }}</p>
+                    </div>
+                    <div class="show-review-stars">
+                        @if ($recipeReview->stars == 1)
+                            <p>{{ '⭐️' }}</p>
+                        @elseif ($recipeReview->stars == 2)
+                            <p>{{ '⭐️⭐️' }}</p>
+                        @elseif ($recipeReview->stars == 3)
+                            <p>{{ '⭐️⭐️⭐️' }}</p>
+                        @elseif ($recipeReview->stars == 4)
+                            <p>{{ '⭐️⭐️⭐️⭐️' }}</p>
+                        @elseif ($recipeReview->stars == 5)
+                            <p>{{ '⭐️⭐️⭐️⭐️⭐️' }}</p>
+                        @endif
+                    </div>
+                
+                    <div class="show-review-comment">
+                        <p>{{ $recipeReview->comment }}</p>
+                    </div>
+                    
+                    <div class="review-link">
+                        <a href="/recipes/{{ $recipe->id }}/review">
+                            このレシピのレビューを見る <i class="fas fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
+        
     
     <script>
         function deletePost(){

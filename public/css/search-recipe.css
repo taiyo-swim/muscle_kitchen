@@ -42,6 +42,11 @@
 
 .search-recipe a {
     color: #556b2f;
+    text-decoration: none;
+}
+
+.search-recipe a:hover {
+    color: #aaaaaa;
 }
 
 .recipe-title-nice {
