@@ -8,7 +8,7 @@
         <div class="user-information">
             <div class="user-image">
             @if ($user->image_path)
-                <img src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/profile/{{ $user->image_path }}" width="400 height="300/>
+                <img src="https://muscle-kitchen.s3.ap-northeast-1.amazonaws.com/{{ $user->image_path }}" width="400 height="300/>
             @else
                 <img src="{{asset('defaultuser.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
             @endif
