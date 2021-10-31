@@ -28,7 +28,7 @@ class RecipePostRequest extends FormRequest
             'recipe_post.explanation' => 'required|string|max:100',
             'tags.*' => 'required|regex:/#([a-zA-z0-9０-９ぁ-んーァ-ンヴー一-龠]+)/u|max:100',
             'image_path' => 'nullable',
-            'image' => 'nullable|mimes:jpg,png,jpeg,',
+            'image' => 'nullable|max:100|mimes:jpg,png,jpeg,',
             'recipe_post.serving' => 'required|int',
             'recipe_post.ingredients.0' => 'required',
             'recipe_post.amount_of_ingredients.0' => 'required',
