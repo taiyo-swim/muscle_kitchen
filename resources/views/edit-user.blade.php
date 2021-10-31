@@ -48,7 +48,7 @@
                         
                         <div class="form-group row" style="font-family: serif;">
                             <label for="email" class="col-md-4 col-form-label text-md-right">
-                                    <h5><i class="far fa-arrow-alt-circle-right"></i> プロフィール画像(10MG以内)</h5>
+                                    <h5><i class="far fa-arrow-alt-circle-right"></i> プロフィール画像(8MG以内)</h5>
                             </label>
                             
                             <label id="image-file" for="image">

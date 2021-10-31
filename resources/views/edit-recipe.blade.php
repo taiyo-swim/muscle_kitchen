@@ -30,7 +30,7 @@
                 </div>
                 
                 <div class="form-image">
-                    <h4>画像(10MG以内)</h4>
+                    <h4>画像(8MG以内)</h4>
                     <label for="image">
                             ファイルを選択
                             <input id="image" type="file" name="image"/>
