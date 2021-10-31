@@ -34,7 +34,7 @@ class My_pageController extends Controller
     public function update_user(Request $request) 
     {
         $this->validate($request, [
-            'image' => 'nullable|max:80000|mimes:jpg,png,jpeg,'
+            'image' => 'nullable|mimes:jpg,png,jpeg,'
             ]);
         
         $user_form = $request->all();
