@@ -17,7 +17,7 @@
                         <img src="{{asset('defaultuser.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
                     @endif
                 </div>
-                <h4 class="user_name"><a href="/my_page">{{ $follower->name }}</a></h4>
+                <h4 class="user_name" style="margin-top: 13px;"><a href="/my_page">{{ $follower->name }}</a></h4>
             @else  <!--フォロワーが自分ではないとき-->
                 <div class="user-image">
                     @if ($follower->image_path)

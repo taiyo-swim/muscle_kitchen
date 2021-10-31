@@ -214,10 +214,10 @@ class RecipePostController extends Controller
     //レビューの投稿
     public function create_review(Request $request, RecipeReview $recipeReview, Recipe $recipe) 
     {
-        // $this->validate($request, [
-        //     'stars' => 'required|integer|min:1|max:5',
-        //     'comment' => 'required'
-        // ]);
+        $this->validate($request, [
+            'review.stars' => 'required|integer|min:1|max:5',
+            'review.comment' => 'required'
+        ]);
         
         $input_review = $request['review'];
         $recipeReview->stars = $input_review['stars'];

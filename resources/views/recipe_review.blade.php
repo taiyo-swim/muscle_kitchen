@@ -30,12 +30,12 @@
                                     <input id="star5" type="radio" name="review[stars]" value="1" />
                                     <label for="star5"><span class="text"></span>★</label>
                                 </div>
-                                <p class="stars__error" style="color:red">{{ $errors->first('stars') }}</p>
+                                <p class="stars__error" style="color:red">{{ $errors->first('review.stars') }}</p>
                             </div>
                             <div class="review-comment">
                                 <h5><i class="fas fa-angle-right"></i> コメント</h5>
                                 <textarea name="review[comment]">{{ old('review.comment') }}</textarea>
-                                <p class="comment__error" style="color:red">{{ $errors->first('comment') }}</p>
+                                <p class="comment__error" style="color:red">{{ $errors->first('review.comment') }}</p>
                             </div>
                             <div class="review-button">
                                 @if($exist_review === null)

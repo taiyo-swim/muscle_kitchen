@@ -151,11 +151,14 @@ return [
         'recipe_post.explanation' => 'レシピの説明',
         'tags.*' => 'タグ',
         'image_path' => '画像',
+        'image' => '画像',
         'recipe_post.serving' => '人数',
         'recipe_post.ingredients.0' => '食材',
         'recipe_post.amount_of_ingredients.0' => '食材の量',
         'recipe_post.how_to_cook.0' => '作り方',
         'recipe_post.point' => 'ポイント',
+        'review.stars' => '星',
+        'review.comment' => 'コメント',
         ],
 
 ];

@@ -18,7 +18,7 @@
                         <img src="{{asset('defaultuser.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
                     @endif
                 </div>
-                <h3 class="user_name"><a href="/my_page">{{ $follow->name }}</a></h3>
+                <h4 class="user_name" style="margin-top: 13px;"><a href="/my_page">{{ $follow->name }}</a></h4>
             @else  <!--フォローが自分ではないとき-->
                 <div class="user-image">
                     @if ($follow->image_path)
@@ -27,7 +27,7 @@
                         <img src="{{asset('defaultuser.png')}}" style="filter: grayscale(100%);">  <!--デフォルトの画像-->
                     @endif
                 </div>
-                <h3 class="user_name" style="margin-top: 13px;"><a href="/users/{{ $follow->id }}">{{ $follow->name }}</a></h3>
+                <h4 class="user_name" style="margin-top: 13px;"><a href="/users/{{ $follow->id }}">{{ $follow->name }}</a></h4>
             @endif
             </div>
         @endforeach

@@ -56,6 +56,7 @@
                                     <input id="image" type="file" name="image" style="display: none;"/>
                             </label>
                             <span class="user_image_path" style="margin-left: 10px;">ファイルが選択されていません</span>
+                            <p class="image__error" style="color:red">{{ $errors->first('image') }}</p>
                         </div>
                         
                         <div class="form-group row mb-0">
