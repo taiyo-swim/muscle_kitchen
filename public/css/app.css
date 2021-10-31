@@ -5266,6 +5266,7 @@ input[type=button].btn-block {
   /*border-radius: 15px;*/
   margin-left: 10px;
   margin-top: 40px;
+  box-shadow: 5px 5px 3px black;
 }
 
 .page-link:hover {
@@ -5281,6 +5282,7 @@ input[type=button].btn-block {
   z-index: 3;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0;
 }
 
 .page-item:first-child .page-link {
@@ -5300,6 +5302,7 @@ input[type=button].btn-block {
   background-color: #808000;
   border-color: #808000;
   border-radius: 15px;
+  box-shadow: 0 0 0;
 }
 
 .page-item.disabled .page-link {
