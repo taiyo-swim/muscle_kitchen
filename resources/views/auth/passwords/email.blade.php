@@ -32,7 +32,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary" style="background-color: #808000; border: none;" onMouseOut="this.style.background='#808000'" onMouseOver="this.style.background='#556b2f'">
-                                    {{ __('Send Password Reset Link') }}
+                                    {{ __('リンクから再設定をおこなってください') }}
                                 </button>
                             </div>
                         </div>

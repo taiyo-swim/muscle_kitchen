@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\CustomResetPassword;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -67,5 +68,15 @@ class User extends Authenticatable implements MustVerifyEmail
 　　第三引数にはリレーションを定義しているモデルの外部キー名
 　　第四引数には結合するモデルの外部キー名
 　　*/
-
+    
+    /**
+     * パスワード再設定メールの送信
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPassword($token));
+    }
 }
