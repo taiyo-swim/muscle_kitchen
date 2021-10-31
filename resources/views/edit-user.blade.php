@@ -52,7 +52,7 @@
                             </label>
                             
                             <label id="image-file" for="image">
-                                    ファイルを選択
+                                    ファイルを選択(1MG以内)
                                     <input id="image" type="file" name="image" style="display: none;"/>
                             </label>
                             <span class="user_image_path" style="margin-left: 10px;">ファイルが選択されていません</span>

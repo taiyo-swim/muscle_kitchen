@@ -32,7 +32,7 @@
                 <div class="form-image">
                     <h4>画像</h4>
                     <label for="image">
-                            ファイルを選択
+                            ファイルを選択(1MG以内)
                             <input id="image" type="file" name="image"/>
                     </label>
                     <span class="recipe_image_path">ファイルが選択されていません</span>

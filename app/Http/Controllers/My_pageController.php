@@ -35,7 +35,7 @@ class My_pageController extends Controller
     {
         $this->validate($request, 
         [
-            'image' => 'nullable|max:1000|mimes:jpg,png,jpeg,'
+            'image' => 'nullable|max:1024|mimes:jpg,png,jpeg,'
         ], 
         [
             'image.max' => '1MG以内にしてください'
