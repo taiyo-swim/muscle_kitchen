@@ -233,11 +233,7 @@
     .recipe-form form {
         margin: 50px 20px;
         padding: 20px;
-        background-color: #ffdbc9;
-        box-shadow: 5px 5px 3px black;
-        font-family: serif;
-        border: dotted 3px #556b2f;
-        border-radius: 1rem;
+        border: dotted 2px #556b2f;
     }
     
     .recipe-form h4 {

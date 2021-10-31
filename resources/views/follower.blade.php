@@ -46,8 +46,6 @@
                 border-radius: 50%; 
                 width: 50px; 
                 height: 50px;
-                border: solid;
-                border-color: black;
             }
         </style>
 @endsection

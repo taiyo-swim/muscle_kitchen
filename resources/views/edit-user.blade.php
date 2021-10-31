@@ -55,7 +55,7 @@
                                     ファイルを選択
                                     <input id="image" type="file" name="image" style="display: none;"/>
                             </label>
-                            <span style="margin-left: 10px;">ファイルが選択されていません</span>
+                            <span class="user_image_path" style="margin-left: 10px;">ファイルが選択されていません</span>
                         </div>
                         
                         <div class="form-group row mb-0">
@@ -63,7 +63,6 @@
                                 <button type="submit" class="btn btn-primary" style="background-color: #808000; border: none;" onMouseOut="this.style.background='#808000'" onMouseOver="this.style.background='#556b2f'">
                                     {{ __('変更する') }}
                                 </button>
-                                <span style="margin-left: 10px; color: #808000;">変更情報を確認してください。</span>
                             </div>
                         </div>
                     </form>
@@ -79,7 +78,7 @@
             $('input').on('change', function ()
             {
                 var file = $(this).prop('files')[0];
-                $('span').text(file.name);
+                $('.user_image_path').text(file.name);
             });
         });
         </script>

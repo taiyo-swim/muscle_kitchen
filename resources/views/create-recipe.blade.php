@@ -34,7 +34,7 @@
                         ファイルを選択
                         <input id="image" type="file" name="image"/>
                     </label>
-                    <span>ファイルが選択されていません</span>
+                    <span class="recipe_image_path">ファイルが選択されていません</span>
                     <p class="image__error" style="color:red">{{ $errors->first('image') }}</p>
                 </div>
                 
@@ -83,7 +83,7 @@
             $('input').on('change', function ()
             {
                 var file = $(this).prop('files')[0];
-                $('span').text(file.name);
+                $('.recipe_image_path').text(file.name);
             });
         });
         
