@@ -23,24 +23,36 @@
 
 ## :notebook: 使用技術
 
+【言語】
+- HTML
+- CSS
+- JavaScript
 - PHP 7.3.29
+
+【OS】
+- Amazon linux
+
+【FW】
 - Laravel 6.20.36
+- jQuery
+- Vue.js
+
+【DB】
 - MariaDB 10.2
-- Google API
-- AWS 
-    - S3 
 
 
 ## :computer: 機能一覧
 
 - ユーザー登録・ログイン機能
-- Googleログイン機能
+- Googleログイン機能（Google API）
 - レシピ投稿・編集・削除機能
 - 画像投稿機能（AWS S3）
 - いいね機能（Ajax）
-    - ランキング機能
+    - ランキング機能（いいねの多い順）
 - フォロー機能（Ajax）
 - 検索機能
 - タグ付け・タグ検索機能
-- レビュー投稿・編集・削除機能
+- レビュー投稿・削除機能
 
+
+##
