@@ -30,7 +30,8 @@ class RecipePostController extends Controller
         if(!empty($keyword))  //検索フォームにキーワードが入力されたときの処理
         {
             //whereで検索条件の絞り込み($keywordであいまい検索)、orWhereHasでリレーション先のテーブルのレコードから検索
-            $query->where('title','like','%'.$keyword.'%')->orWhere('ingredients','like','%'.$keyword.'%')->orWhere('explanation','like','%'.$keyword.'%')->orWhereHas('tags', function($query) use ($keyword){
+            $query->where('title','like','%'.$keyword.'%')->orWhere('ingredients','like','%'.$keyword.'%')->orWhere('explanation','like','%'.$keyword.'%')
+            ->orWhereHas('tags', function($query) use ($keyword){
                 $query->where('name','like','%'.$keyword.'%');
             });
         }
@@ -59,7 +60,6 @@ class RecipePostController extends Controller
     //特定IDのrecipeを表示する
     public function show(Recipe $recipe)  // 引数の$postはid=1のPostインスタンス
     {
-        // $nice=Nice::where('recipe_id', $recipe->id)->where('user_id', auth()->user()->id)->first();  //いいね表示用のコードを追加
         $nice_count = $recipe->loadCount('nices');
         $nice_model = new Nice;
         
