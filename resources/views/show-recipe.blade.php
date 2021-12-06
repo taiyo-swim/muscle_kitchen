@@ -7,7 +7,12 @@
                 <div class="show-title">
                     <h3>{{ $recipe->title }}</h3>
                         <div class="nice">
-                            @if($nice_model->nice_exist(Auth::user()->id, $recipe->id))
+                            @if(Auth::user() === null)
+                                <p class="favorite-marke">
+                                    <a href="/login" style="color: #dddddd; font-size: 1.3em;"><i class="fas fa-heart"></i></a>
+                                    <span class="nicesCount">{{$recipe->nices_count}}</span>
+                                </p>
+                            @elseif($nice_model->nice_exist(Auth::user()->id, $recipe->id))
                             <p class="favorite-marke">
                                 <a class="js-nice-toggle loved" href="" data-recipeid="{{ $recipe->id }}" style="font-size: 1.7em; color: #dddddd;"><i class="fas fa-heart"></i></a>
                                 <span class="nicesCount" style="font-size: 1.5em;">{{$recipe->nices_count}}</span>
@@ -22,7 +27,9 @@
                 </div>
                 
                 <div class="show-user_name">
-                    @if($recipe->user->id === $auth->id)
+                    @if($auth === null)
+                        <h5><a href="/login">by {{ $recipe->user->name }}</a></h5>
+                    @elseif($recipe->user->id === $auth->id)
                         <h5><a href="/my_page">by {{ $recipe->user->name }}</a></h5>  <!--自分の投稿したレシピの場合はマイページへ-->
                     @else
                         <h5><a href="/users/{{ $recipe->user->id }}">by {{ $recipe->user->name }}</a></h5> <!--それ以外の場合はユーザーページへ-->
