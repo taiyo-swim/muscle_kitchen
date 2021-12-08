@@ -57,7 +57,7 @@
                                 <a class="dropdown-item" href="/my_page">
                                     マイページ
                                 </a>
-                                <a class="dropdown-item" href="/recipes/create">
+                                <a class="dropdown-item" href="/create_recipe">
                                     レシピ投稿
                                 </a>
                                 <a id="navbarDropdown" class="dropdown-item dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -133,7 +133,7 @@
                         <li><a class="dropdown-item" href="/my_page" style="border-right: solid;">
                             マイページ
                         </a></li>
-                        <li><a class="dropdown-item" href="/recipes/create" style="border-right: solid;">
+                        <li><a class="dropdown-item" href="/create_recipe" style="border-right: solid;">
                             レシピ投稿
                         </a></li>
                         <li class="nav-item dropdown" id="navbar-recipe">
