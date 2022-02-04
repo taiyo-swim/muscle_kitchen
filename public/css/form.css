@@ -181,6 +181,23 @@
     border-bottom: 2px solid #000033;
 }
 
+#cooktimes {
+    width: 3rem;
+    /*padding: 0.3em;*/
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    border: 1px solid #ffdbc9;
+    box-shadow: 2px 2px 2px 0 #707070 inset;
+    border-radius: 4px;
+}
+
+#cooktimes:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 2px 0 #c9c9c9;
+    background-color: #fafae0;
+}
+
 #how_to_cook {
     width: 95%;
     /*box-sizing: border-box;*/
@@ -266,5 +283,9 @@
     
     .form-submit input {
         width: 5rem;
+    }
+    
+    #cooktimes {
+        width: 2rem;
     }
 }

@@ -23,11 +23,13 @@
 .show-title {
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     margin-bottom: 10px;
+    border-bottom: dotted 2px #800000;
 }
 
 .recipe-information h3 {
+    padding-top: 0;
     font-family: 'Sawarabi Mincho', sans-serif;
 }
 
@@ -40,7 +42,9 @@
 }
 
 .show-user_name {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .show-user_name a {
@@ -54,6 +58,13 @@
 
 .show-explanation {
     margin-top: 5px;
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    color: #565656;
+    background: #ffeaea;
+    box-shadow: 0px 0px 0px 5px #ffeaea;
+    border: dashed 2px #ffc3c3;
+    border-radius: 8px;
 }
 
 .recipe-button {
@@ -122,7 +133,7 @@
     margin: 3px;
     text-decoration: nane;
     color: #228b22;
-    background-color: #fafae0;
+    background-color: #ffefd5;
     border: 1px solid #228b22;
     border-radius: 2em;
     box-shadow: 3px 3px 5px black;
@@ -143,6 +154,11 @@
     justify-content: flex-start;
 }
 
+.ingredients h4 {
+    border-bottom: dotted 2px #800000;
+    padding-bottom: 5px;
+}
+
 .ingredients-detail {
     margin: 10px 50px;
     display: flex;
@@ -154,6 +170,38 @@
 
 .how_to_cook {
     margin-left: 100px;
+}
+
+.how_to_cook h4 {
+    border-bottom: dotted 2px #800000;
+    width: 500px;
+    padding-bottom: 5px;
+}
+
+.point {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 2px #800000;
+    border-radius: 8px;
+}
+
+.point #point {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #fafae0;
+    color: #800000;
+    font-weight: bold;
+}
+
+.point .point p {
+    margin: 0; 
+    padding: 0;
 }
 
 .meneu-review {
@@ -213,6 +261,10 @@
     .show-user_name h5 {
         font-size: 1rem;
     }
+    
+    .show-user_name p {
+        font-size: 0.6rem;
+    }    
         
     .show-explanation {
         margin-top: 0;

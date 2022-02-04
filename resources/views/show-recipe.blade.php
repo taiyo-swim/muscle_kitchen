@@ -34,6 +34,7 @@
                     @else
                         <h5><a href="/users/{{ $recipe->user->id }}">by {{ $recipe->user->name }}</a></h5> <!--それ以外の場合はユーザーページへ-->
                     @endif
+                    <p>投稿日：{{ $recipe->created_at->format('Y年m月d日') }}</p>
                 </div>
                 
                 <p class="show-explanation">
@@ -87,18 +88,18 @@
                     </div>
                 </div>
                 <div class="how_to_cook">
-                    <h4><i class="fa fa-arrow-circle-right"></i> 作り方</h4>
+                    <h4><i class="fa fa-arrow-circle-right"></i> 作り方　　<span  style="color: #6699ff;"><i class="fas fa-clock"></i> {{ $recipe->cooktimes }}分</span></h4>
                     <p>・{!! nl2br(htmlspecialchars( $recipe->how_to_cook)) !!}</p>
                 </div>
             </div>
                     
             <div class="point">
-                <h4><i class="fa fa-arrow-circle-right"></i> ポイント</h4>
+                <h4 id="point"><i class="far fa-check-square"></i> POINT</h4>
                 <p>{{ $recipe->point }}</p>
             </div>
             
             <div class="show-reviews meneu-review">
-                <h4><i class="fa fa-arrow-circle-right"></i> レビュー（{{ $review_count }}件）</h4>
+                <h4><i class="fas fa-pencil-alt"></i> レビュー（{{ $review_count }}件）</h4>
                 <div class="show_review">
                     @if($recipeReview !== null)
                         <div class="review_user_name">

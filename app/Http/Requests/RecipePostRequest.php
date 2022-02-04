@@ -32,6 +32,7 @@ class RecipePostRequest extends FormRequest
             'recipe_post.serving' => 'required|int',
             'recipe_post.ingredients.0' => 'required',
             'recipe_post.amount_of_ingredients.0' => 'required',
+            'recipe_post.cooktimes' => 'required|int',
             'recipe_post.how_to_cook.0' => 'required',
             'recipe_post.point' => 'nullable|string|max:100'
         ];

@@ -76,7 +76,7 @@
                         <p>{{ $recipeReview->comment }}</p>
                     </div>
                     <div class="show-review-day">
-                        <p>{{ $recipeReview->created_at }}</p>
+                        <p>{{ $recipeReview->created_at->format('Y年m月d日') }}</p>
                     </div>
                     
                     <div class="delete delete-review-button">

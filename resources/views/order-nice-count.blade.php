@@ -18,6 +18,7 @@
                     <div class="search-recipe-text">
                         <div class="recipe-title-nice">
                             <h3><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a></h3>  <!--レシピのタイトル表示-->
+                            <h5 class="cooktimes"><span  style="color: #6699ff;"><i class="fas fa-clock"></i> {{ $recipe->cooktimes }}分</span></h5>
                             <div class="nice">
                                 @if(Auth::user() === null)
                                 <p class="favorite-marke">

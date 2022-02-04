@@ -67,6 +67,8 @@
                 
                 <div class="form-how_to_cook">
                     <h4>作り方</h4>
+                    <i class="fas fa-clock"></i> <input id="cooktimes" name="recipe_post[cooktimes]" value="{{ $recipe->cooktimes }}">分
+                    <p class="cooktimes__error" style="color:red">{{ $errors->first('recipe_post.cooktimes') }}</p>
                     <ol id="how_to_cook_order_list">
                         @if ($how_to_cook_count > 1)
                             @for ($i = 0; $i < $how_to_cook_count; $i++)

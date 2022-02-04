@@ -18,6 +18,8 @@ class Recipe extends Model
     'image',
     'serving',
     'ingredients',
+    'amount_of_ingredients',
+    'cooktimes',
     'how_to_cook',
     'point'
     ];

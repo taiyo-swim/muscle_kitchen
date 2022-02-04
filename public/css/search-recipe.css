@@ -84,15 +84,19 @@
     }
     
     .recipe-title-nice {
-        height: 20px;
+        height: 27px;
     }
     
     .search-recipe-text h3 {
         font-size: 0.8rem;
     }
     
+    .search-recipe-text h5 {
+        font-size: 0.5rem;
+    }
+    
     .favorite-marke {
-        font-size: 0.7rem;
+        font-size: 0.5rem;
     }
     
     .search-recipe img {

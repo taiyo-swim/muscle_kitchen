@@ -114,6 +114,7 @@ class RecipePostController extends Controller
         $recipe->serving = $input['serving'];
         $recipe->ingredients = implode("\n", $input['ingredients']);
         $recipe->amount_of_ingredients = implode("\n", $input['amount_of_ingredients']);
+        $recipe->cooktimes = $input['cooktimes'];
         $recipe->how_to_cook = implode("\n・", $input['how_to_cook']);
         $recipe->point = $input['point'];
         $recipe->user_id = auth()->id();
@@ -174,6 +175,7 @@ class RecipePostController extends Controller
         $recipe->serving = $input_post['serving'];
         $recipe->ingredients = implode("\n", $input_post['ingredients']);
         $recipe->amount_of_ingredients = implode("\n", $input_post['amount_of_ingredients']);
+        $recipe->cooktimes = $input_post['cooktimes'];
         $recipe->how_to_cook = implode("\n・", $input_post['how_to_cook']);
         $recipe->point = $input_post['point'];
         

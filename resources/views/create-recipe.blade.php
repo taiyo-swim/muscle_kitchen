@@ -40,7 +40,8 @@
                 
                 <div class="form-ingredients">
                     <h4>食材</h4>
-                    <input id="serving" name="recipe_post[serving]">人前
+                    <input id="serving" name="recipe_post[serving]" placeholder="2">人前
+                    <p class="serving__error" style="color:red">{{ $errors->first('recipe_post.serving') }}</p>
                     <ol id="ingredients_order_list" style="list-style-type:none;">
                         <li>
                             <input type="text" id="ingredients" name="recipe_post[ingredients][]" placeholder="鶏むね肉">
@@ -50,11 +51,14 @@
                         <div class="form-add-button">
                             <input type="button" value="+" id="ingredients_btn_add">
                         </div>
-                    <p class="ingredients__error" style="color:red">{{ $errors->first('recipe_post.ingredients') }}</p>
+                    <p class="ingredients__error" style="color:red">{{ $errors->first('recipe_post.ingredients.0') }}</p>
+                    <p class="amount_of_ingredients__error" style="color:red">{{ $errors->first('recipe_post.amount_of_ingredients.0') }}</p>
                 </div>
                 
                 <div class="form-how_to_cook">
                     <h4>作り方</h4>
+                    <i class="fas fa-clock"></i> <input id="cooktimes" name="recipe_post[cooktimes]" placeholder="10">分
+                    <p class="cooktimes__error" style="color:red">{{ $errors->first('recipe_post.cooktimes') }}</p>
                     <ol id="how_to_cook_order_list">
                         <li>
                             <input  type="text" id="how_to_cook" name="recipe_post[how_to_cook][]" placeholder="鶏むね肉を食べやすい大きさに切る。">
@@ -63,7 +67,7 @@
                     <div class="form-add-button">
                         <input type="button" value="+" id="how_to_cook_btn_add">
                     </div>
-                    <p class="how_to_cook__error" style="color:red">{{ $errors->first('recipe_post.how_to_cook') }}</p>
+                    <p class="how_to_cook__error" style="color:red">{{ $errors->first('recipe_post.how_to_cook.0') }}</p>
                 </div>
                     
                 <div class="form-point">
