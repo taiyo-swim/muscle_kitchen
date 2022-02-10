@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 */
 
 
-Auth::routes(['valify' => true]);
+Auth::routes(['verify' => true]);
 Route::get('/', 'RecipePostController@index');  ///homeにGETリクエストが来たらRecipePostControllerのindexメソッドを実行する。(レシピ一覧画面の表示)
 Route::get('/search', 'RecipePostController@search');  //レシピ検索機能の実行
 Route::get('/tag_search', 'RecipePostController@tag_search');  //タグ検索の実行
